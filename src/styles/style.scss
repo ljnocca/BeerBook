@@ -1,10 +1,71 @@
 * {
-	font-family: Helvetica, Arial, sans-serif;
 	box-sizing: border-box;
 }
 
+//FONTS
 h1 {
-	font-size: 300px;
-	text-align: center;
-	color: fuchsia;
+	font-family: "Roboto";
 }
+
+h2 {
+	font-family: "Open Sans";
+	text-align: center;
+}
+
+p {
+	font-family: "Inconsolata";
+}
+// COLORS
+
+//BROWNS//
+$vibrant:         rgb(214,195,179);
+$darkVibrant:     rgb(196,180,161);
+$muted:           rgb(189,146,111);
+$deer:			  rgb(190, 138, 100);
+$lightVibrant:    rgb(132,100,65);
+
+//BLUES//
+$iceberg:		  rgb(115, 199, 206);
+$cadetBlue: 	  rgb(88, 148, 163);
+
+//YELLOWS//
+$sunny: 		  rgb(253, 247, 117);
+
+//ORANGES//
+$orangy: 		  rgb(249, 153, 11);
+
+
+
+
+
+.container{
+	.banner{
+		text-align: center;
+		li{
+			list-style: none;
+			display: inline-block;
+
+			a {
+				text-decoration: none;
+				display: inline-block;
+				cursor: pointer;
+				margin: 10px;
+				padding: 10px;
+				background:	$orangy;
+				color: white;
+			}
+
+			a:hover{
+				background: $sunny;
+				color: black;
+			}
+
+		}
+	}
+}
+
+//NAVIGATION
+
+
+
+

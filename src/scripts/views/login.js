@@ -32,7 +32,7 @@ const RegisterForm = React.createClass({
 
 	render: function() {
 		return (
-			<form onSubmit={this._handleSubmit} className='form-group register-form' >
+			<form onSubmit={this._handleSubmit} className='form-style-4' >
 
 					<input 
 						className="formField"

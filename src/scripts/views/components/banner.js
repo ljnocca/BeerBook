@@ -11,39 +11,39 @@ const Banner = React.createClass({
 	 	return (
 	 		<div className='banner' >
 	 			<h1 id="title">BeerBook</h1>
-	 			<ul className="nav">
+	 			<ul className="navigation">
 
-	 				<li className="nav-item">
-	 					<a href="#login" className="nav-link">
+	 				<li className="navItem">
+	 					<a href="#login" className="navLink">
 	 						Login / Signup
 	 					</a>
 	 				</li>
 
-	 				<li className="nav-item">
-	 					<a href="#profile" className="nav-link">
+	 				<li className="navItem">
+	 					<a href="#profile" className="navLink">
 	 						My Profile
 	 					</a>
 	 				</li>
 
-	 				<li className="nav-item">
-	 					<a href="#favorites" className="nav-link">
+	 				<li className="navItem">
+	 					<a href="#favorites" className="navLink">
 	 						My Favorites
 	 					</a>
 	 				</li>
 
-	 				<li className="nav-item">
-	 					<a href="#recommendations" className="nav-link">
-	 						My Recommended Beers
+	 				<li className="navItem">
+	 					<a href="#recommendations" className="navLink">
+	 						Beers Recommended to Me
 	 					</a>
 	 				</li>
 
-	 				<li className="nav-item">
-	 					<a href="#search" className="nav-link">
-	 						Browse
+	 				<li className="navItem">
+	 					<a href="#search" className="navLink">
+	 						Search
 	 					</a>
 	 				</li>
 
-	 				<li className="nav-item">
+	 				<li className="navItem">
 	 					<a onClick={ACTIONS.logout} className="logoutLink">
 	 						Log Out
 	 					</a>

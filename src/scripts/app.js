@@ -8,6 +8,7 @@ import Favorites from './views/favorites.js'
 import Login from './views/login.js'
 import Profile from './views/profile.js'
 import Search from './views/search.js'
+import STORE from './store.js'
 
 
 const app = function() {
