@@ -4,23 +4,16 @@ import STORE from './../store.js'
 import Banner from './components/banner.js'
 
 const Search = React.createClass({
-
-	render: function() {
-	 	return (
-	 		<div className='login-page' >
-	 			<Banner />
-	 			<h2>Browse Beer Stuff</h2>
-	 			<SearchForm />
-	 		</div>
-	 	)
- 	}
-})
-
-const SearchForm = React.createClass({
 	componentWillMount:function(){
 		STORE.on('dataUpdated', () => {
 			this.setState(STORE.data)
 		})
+	},
+	componentWillUnmount:function(){
+		STORE.off('dataUpdated')
+    },
+	getInitialState: function() {
+		return STORE.data
 	},
 	_handleSubmit: function(evtObj) {
 		evtObj.preventDefault()
@@ -28,11 +21,13 @@ const SearchForm = React.createClass({
 
 		ACTIONS.searchBeer(formEl.beerSearch.value)
 	},
-
 	render: function() {
-		return (
-			<div className="searchDiv">
-				<form onSubmit={this._handleSubmit} className='form-group register-form' >
+		console.log(this.state.beerCollection)
+	 	return (
+	 		<div className='login-page' >
+	 			<Banner />
+	 			<h2>Browse Beer Stuff</h2>
+	 			<form onSubmit={this._handleSubmit} className='form-group register-form' >
 
 						<input 
 							className="formField"
@@ -43,41 +38,40 @@ const SearchForm = React.createClass({
 
 					<button className="submitButton" type="submit">submit</button>
 				</form>
-				<SearchCollection collection={STORE.data.beerCollection} />
+	 			<Beers beerCollection={this.state.beerCollection}/>
+	 		</div>
+	 	)
+ 	}
+})
+
+const Beers = React.createClass({
+	makeBeers: function(model){
+		return <Beer 
+				beerModel={model}
+				key={model.cid}
+				/>
+	},
+	render: function() {
+		return (
+			<div className="beers">
+				{this.props.beerCollection.map(this.makeBeers)}				
 			</div>
 			)
 	}
 })
 
-const SearchCollection = React.createClass({
-	_makeBeers: function(){
-		var newArray = []
-		for (var i = 0; i<this.props.collection.models.length; i++){
-			newArray.push(<BeerModels beerModels={this.props.collection.models[i]} />)
-		}
-		return newArray
-	},
+const Beer = React.createClass({
 	render: function(){
-		return(
-			<div>
-				{this._makeBeers()}
-			</div>
-		)
-	}
-})
-
-const BeerModels = React.createClass({
-	render: function(){
-		console.log(this.props.beerModels)
+		console.log(this.props.beerModel)
 		return(
 			<div className='beerDiv'>
-				<h1>{this.props.beerModels.get('name')}</h1>
-
+				<h2>{this.props.beerModel.get('name')}</h2>
+			
+				<p>{this.props.beerModel.get('description')}</p>
 			</div>
 		)
 	}
 })
-
 
 
 
