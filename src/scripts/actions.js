@@ -12,7 +12,8 @@ var ACTIONS = {
 
 			data:{
                 'key' : beerKey,
-                'q' : searchString
+                'q' : searchString,
+                'type': 'beer'
 			}
 		})
 

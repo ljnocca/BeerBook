@@ -2,6 +2,10 @@
 	box-sizing: border-box;
 }
 
+img {
+	max-width: 100%;
+}
+
 //FONTS
 h1 {
 	font-family: "Roboto";
@@ -60,6 +64,17 @@ $orangy: 		  rgb(249, 153, 11);
 				color: black;
 			}
 
+		}
+	}
+	.beers{
+		display: flex;
+		flex-wrap: wrap;
+
+		div{
+			background: lightgrey;
+		    padding: 10px;
+		    margin: 10px;
+		    width: 30%;
 		}
 	}
 }

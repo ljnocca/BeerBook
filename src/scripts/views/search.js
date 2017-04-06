@@ -34,7 +34,7 @@ const Search = React.createClass({
 							type="text" 
 							name="beerSearch"
 							placeholder="enter your beer search"
-							/>
+						/>
 
 					<button className="submitButton" type="submit">submit</button>
 				</form>
@@ -47,8 +47,8 @@ const Search = React.createClass({
 const Beers = React.createClass({
 	makeBeers: function(model){
 		return <Beer 
-				beerModel={model}
-				key={model.cid}
+					beerModel={model}
+					key={model.cid}
 				/>
 	},
 	render: function() {
@@ -63,13 +63,28 @@ const Beers = React.createClass({
 const Beer = React.createClass({
 	render: function(){
 		console.log(this.props.beerModel)
-		return(
-			<div className='beerDiv'>
-				<h2>{this.props.beerModel.get('name')}</h2>
-			
-				<p>{this.props.beerModel.get('description')}</p>
-			</div>
-		)
+		if(this.props.beerModel.attributes.labels === undefined){
+
+			return(
+				<div className='beerDiv'>
+					<h2>{this.props.beerModel.get('name')}</h2>
+					<h4>{'ABV: '}{this.props.beerModel.get('abv')}{'%'}</h4>
+					<p>{this.props.beerModel.get('description')}</p>
+				</div>
+			)
+		}
+		else{
+
+			return(
+				<div className='beerDiv'>
+					<h2>{this.props.beerModel.get('name')}</h2>
+					<h3>{this.props.beerModel.get('style').category.name}</h3>
+					<img src={this.props.beerModel.get('labels').medium}/>
+					<h4>{'ABV: '}{this.props.beerModel.get('abv')}{'%'}</h4>
+					<p>{this.props.beerModel.get('description')}</p>
+				</div>
+			)
+		}
 	}
 })
 
