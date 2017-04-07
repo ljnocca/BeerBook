@@ -3,7 +3,7 @@ const apiRouter = Router()
 let helpers = require('../config/helpers.js')
 
 let User = require('../db/schema.js').User
-
+var Favorites = require('../db/schema.js').Favorites
   
   apiRouter
     .get('/users', function(req, res){
@@ -46,6 +46,47 @@ let User = require('../db/schema.js').User
     })
 
     // Routes for a Model(resource) should have this structure
+    
+    apiRouter
+      .get('/favorites', function(request, respons){
+        Favorites.find(request.query, function(error, records){
+          if (error){
+            return response.status(400).json(error)
+          }
+          response.json(records)
+        })
+      })
 
+      .post('/favorites', function(request,response){
+        var newFavorite = new Favorites(request.body)
+        newFavorite.save(function(error,record){
+          if (error){
+            return response.status(400).json(error)
+          }
+          response.json(record)
+        })
+      })
+
+      .delete('/favorites/:favID', function(request,response){
+        Favorites.remove({_id: request.params.favID}, function(error){
+          if (error){
+            return response.status(400).json(error)
+          }
+          response.json({
+            msg: `Favorite with id ${request.params.favID} has been deleted.`,
+            id: request.params.favID
+          })
+        })
+      })
+
+      .put('/favorites/:favID', function(request,response){
+        Favorites.findByIdAndUpdate(request.params.favID,request.body,{new: true}, function(error, record){
+          if (error){
+            console.log(response)
+            return response.status(400).json(error)
+          }
+          response.json(record)
+        })
+      })
 
 module.exports = apiRouter

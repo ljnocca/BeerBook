@@ -6,7 +6,8 @@ import Banner from './components/banner.js'
 const Login = React.createClass({
 	 render: function() {
 	 	return (
-	 		<div className='login-page' >
+
+	 		<div className='login-page'>
 	 			<Banner />
 	 			<h2>Register</h2>
 	 			<RegisterForm />
@@ -32,7 +33,7 @@ const RegisterForm = React.createClass({
 
 	render: function() {
 		return (
-			<form onSubmit={this._handleSubmit} className='form-style-4' >
+			<form onSubmit={this._handleSubmit} className='register-form' >
 
 					<input 
 						className="formField"
@@ -77,7 +78,7 @@ const LoginForm = React.createClass({
 
 	render: function() {
 		return (
-			<form onSubmit={this._handleSubmit} className='form-group register-form' >
+			<form onSubmit={this._handleSubmit} className='login-form' >
 					 <input 
 						className="formField"
 					 	type="text" 

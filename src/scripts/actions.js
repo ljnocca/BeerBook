@@ -63,6 +63,9 @@ var ACTIONS = {
 					alert('problem registering user!')
 					console.log(err)
 				})
+	},
+	addFavorite: function(model){
+		
 	}
 }
 

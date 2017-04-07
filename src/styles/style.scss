@@ -2,10 +2,15 @@
 	box-sizing: border-box;
 }
 
-img {
-	max-width: 100%;
+button.like {
+    background: #ff002d;
+    color: white;
+    font-size: 20px;
 }
 
+
+
+//------------------------------------------------//
 //FONTS
 h1 {
 	font-family: "Roboto";
@@ -13,33 +18,60 @@ h1 {
 
 h2 {
 	font-family: "Open Sans";
-	text-align: center;
 }
 
 p {
 	font-family: "Inconsolata";
 }
+//------------------------------------------------//
 // COLORS
+	//BROWNS//
+	$vibrant:         rgb(214,195,179);
+	$darkVibrant:     rgb(196,180,161);
+	$muted:           rgb(189,146,111);
+	$deer:			  rgb(190, 138, 100);
+	$lightVibrant:    rgb(132,100,65);
 
-//BROWNS//
-$vibrant:         rgb(214,195,179);
-$darkVibrant:     rgb(196,180,161);
-$muted:           rgb(189,146,111);
-$deer:			  rgb(190, 138, 100);
-$lightVibrant:    rgb(132,100,65);
+	//BLUES//
+	$iceberg:		  rgb(115, 199, 206);
+	$cadetBlue: 	  rgb(88, 148, 163);
 
-//BLUES//
-$iceberg:		  rgb(115, 199, 206);
-$cadetBlue: 	  rgb(88, 148, 163);
+	//YELLOWS//
+	$sunny: 		  rgb(253, 247, 117);
 
-//YELLOWS//
-$sunny: 		  rgb(253, 247, 117);
+	//ORANGES//
+	$orangy: 		  rgb(249, 153, 11);
+//------------------------------------------------//
 
-//ORANGES//
-$orangy: 		  rgb(249, 153, 11);
+//BANNER
+h1#title {
+    background: rgba(214,195,179,0.4);
+    font-size: 75px;
+    margin: 0;
+}
 
+//LOGIN PAGE
+.login-page {
+    background: url(../images/beerBackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
 
+.register-form, .login-form{
+	text-align: center;
+}
 
+input.formField {
+    display: block;
+    margin: 10px auto;
+}
+
+//SEARCH PAGE
+img {
+	max-width: 100%;
+}
 
 
 .container{
@@ -71,10 +103,12 @@ $orangy: 		  rgb(249, 153, 11);
 		flex-wrap: wrap;
 
 		div{
-			background: lightgrey;
+			background: rgba(156, 142, 142, 0.4);
+			border: 1px solid black;
 		    padding: 10px;
 		    margin: 10px;
 		    width: 30%;
+		    text-align: center;
 		}
 	}
 }
