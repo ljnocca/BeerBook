@@ -82,12 +82,13 @@ img {
 			display: inline-block;
 
 			a {
+				border: 1px solid black;
 				text-decoration: none;
 				display: inline-block;
 				cursor: pointer;
 				margin: 10px;
 				padding: 10px;
-				background:	$orangy;
+				background:	rgba(134, 120, 120, 0.6);
 				color: white;
 			}
 

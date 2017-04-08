@@ -7,19 +7,21 @@ const usersSchema = new mongoose.Schema({
   email:     { type: String, required: true },
   password:  { type: String, required: true },
   name:      { type: String, required: true },
-  homeTown: { type: String},
   createdAt: { type: Date, default: Date.now }
 })
 
 const favoritesSchema = new mongoose.Schema({
-	beerName: {type: String, required: true},
-  beerLabel: {type: String, required: true},
-  beerStyle: {type: String, required: false},
-  beerABV: {type: String, required: false},
-  beerIBU: {type: String, required: false},
-  beerDescription: {type: String, required: false},
-  beerFoodPairing: {type: String, required: false},
-  beerOrganic: {type: String, required: false}
+  userName: {type: String, required: true},
+  userId: {type: String, required: true},
+	name: {type: String, required: true},
+  label: {type: mongoose.Schema.Types.Mixed},
+  style: {type: mongoose.Schema.Types.Mixed},
+  abv: {type: mongoose.Schema.Types.Mixed},
+  ibu: {type: mongoose.Schema.Types.Mixed},
+  description: {type: mongoose.Schema.Types.Mixed},
+  foodPairings: {type: mongoose.Schema.Types.Mixed},
+  isOrganic: {type: mongoose.Schema.Types.Mixed},
+  createdAt: {type: Date, default: Date.now}, 
 })
 
 // const recommendationsSchema = new mongoose.Schema({

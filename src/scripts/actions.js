@@ -1,22 +1,44 @@
 import STORE from './store.js'
 import {BeerCollection} from './models/beerCollection.js'
+import {BeerModel} from './models/beerCollection.js'
 import config from './../../config/secrets.js'
 import User from './models/userModel.js'
 
 var beerKey = config.key
 
 var ACTIONS = {
+	addFavorite: function(beerData){
+		beerData.set({
+			userName: User.getCurrentUser().get('name'),
+			userId: User.getCurrentUser().get('_id')
+		})
+		var newFav = new BeerModel(beerData.attributes)
+		newFav.save()
+			.then(
+				function(response) { // SUCCESS
+					alert('saved your beer!')
+				},
+				function(err) { // FAILURE
+					alert('problem saving your favorite!')
+					console.log(err)
+				}
+			)
+	},
+	deleteFavorite: function(beerModel){
+
+	},
+	fetchFavoritesByUser: function(inputID){
+
+	},
 	searchBeer:function(searchString){
 		var beerInstance = new BeerCollection()
 		var promise = beerInstance.fetch({
-
 			data:{
                 'key' : beerKey,
                 'q' : searchString,
                 'type': 'beer'
 			}
 		})
-
 		promise.then(()=>{
 			STORE.set({
 				beerCollection: beerInstance
@@ -63,9 +85,6 @@ var ACTIONS = {
 					alert('problem registering user!')
 					console.log(err)
 				})
-	},
-	addFavorite: function(model){
-		
 	}
 }
 

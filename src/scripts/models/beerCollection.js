@@ -1,7 +1,16 @@
 import Backbone from 'backbone'
 
-const BeerModel = Backbone.Model.extend({
-	
+export var BeerModel = Backbone.Model.extend({
+	urlRoot: '/api/favorites',
+	idAttribute: '_id'
+})
+
+export var FavoritesCollection = Backbone.Collection.extend({
+	comparator: function(mod) {
+		return new Date(mod.get('createdAt')).getTime() * -1
+	},
+	model: BeerModel,
+	url: '/api/favorites'
 })
 
 export var BeerCollection = Backbone.Collection.extend({

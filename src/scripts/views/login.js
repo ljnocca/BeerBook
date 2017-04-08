@@ -25,8 +25,7 @@ const RegisterForm = React.createClass({
 		var	userData = {
 				name: formEl.yourName.value,
 				email: formEl.email.value,
-				password: formEl.password.value,
-				city: formEl.city.v
+				password: formEl.password.value
 			}
 		ACTIONS.registerUser(userData)
 	},
@@ -55,13 +54,6 @@ const RegisterForm = React.createClass({
 						name="password" 
 						placeholder="enter your password"
 						/>
-
-					<input 
-					className="formField"
-				 	type="text" 
-				 	name="city"
-				 	placeholder="enter your city"
-				 	 />
 
 				<button className="submitButton" type="submit">submit</button>
 			</form>

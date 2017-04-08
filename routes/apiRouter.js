@@ -48,7 +48,7 @@ var Favorites = require('../db/schema.js').Favorites
     // Routes for a Model(resource) should have this structure
     
     apiRouter
-      .get('/favorites', function(request, respons){
+      .get('/favorites', function(request, response){
         Favorites.find(request.query, function(error, records){
           if (error){
             return response.status(400).json(error)
