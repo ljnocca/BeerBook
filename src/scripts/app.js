@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom'
 import Backbone from 'backbone'
 import init from './init'
 
+import STORE from './store.js'
+
 import Recommendations from './views/recommendations.js'
 import Favorites from './views/favorites.js'
 import Login from './views/login.js'
-import Profile from './views/profile.js'
+import Pub from './views/pub.js'
 import Search from './views/search.js'
-import STORE from './store.js'
+import BeerFacts from './views/beerFacts.js'
+
 
 
 const app = function() {
@@ -17,8 +20,9 @@ const app = function() {
       'favorites/user/:id': 'showFavorites',
   		'recommendations': 'showRecommendations',
   		'login':'showLoginPage',
-  		'profile': 'showProfile',
+  		'pub': 'showProfile',
   		'search': 'showSearch',
+      'learn': 'showBeerFacts',
   		'*default': 'handleRedirect'
   	},
     showFavorites: function(id){
@@ -30,12 +34,15 @@ const app = function() {
   	showLoginPage: function(){
   		ReactDOM.render(<Login /> ,document.querySelector('.container'))
   	},
-  	showProfile: function(){
-  		ReactDOM.render(<Profile /> ,document.querySelector('.container'))
+  	showPub: function(){
+  		ReactDOM.render(<Pub /> ,document.querySelector('.container'))
   	},
   	showSearch: function(){
   		ReactDOM.render(<Search /> ,document.querySelector('.container'))
   	},
+    showBeerFacts: function(){
+      ReactDOM.render(<BeerFacts />, document.querySelector('.container'))
+    },
   	handleRedirect: function(){
   		location.hash = 'login'
   	}

@@ -2,18 +2,11 @@
 	box-sizing: border-box;
 }
 
-button.like {
-    background: #ff002d;
-    color: white;
-    font-size: 20px;
-}
-
-
-
 //------------------------------------------------//
 //FONTS
 h1 {
-	font-family: "Roboto";
+	font-family: 'Bilbo', cursive;
+	color: #decfb1;
 }
 
 h2 {
@@ -60,18 +53,9 @@ h1#title {
     width: 100vw;
 }
 
-.search-page {
-    background: url(../images/beerBubbles.jpg);
-    background-size: cover;
-    width: 100vw;
-    background-attachment: fixed;
-}
 
 
-
-
-
-//FORM
+//FORMS
 .splash-form{
     max-width: 400px;
     margin: 10px auto;
@@ -98,7 +82,6 @@ h1#title {
     border: 1px solid #ccc;
     padding: 3%;
     color: #555;
-    font: 95% Arial, Helvetica, sans-serif;
 }
 .splash-form input[type="text"]:focus,
 .splash-form input[type="password"]:focus,
@@ -134,6 +117,18 @@ img {
 	max-width: 100%;
 }
 
+.search-page {
+    background: url(../images/beerBubbles.jpg);
+    background-size: cover;
+    width: 100vw;
+    background-attachment: fixed;
+}
+
+button.like {
+    background: #e43f3f;
+    color: white;
+    font-size: 30px;
+}
 
 .container{
 	.banner{
@@ -143,19 +138,23 @@ img {
 			display: inline-block;
 
 			a {
-				border: 1px solid black;
 				text-decoration: none;
-				display: inline-block;
-				cursor: pointer;
-				margin: 10px;
-				padding: 10px;
-				background:	rgba(134, 120, 120, 0.6);
-				color: white;
+			    display: inline-block;
+			    cursor: pointer;
+			    margin: 10px;
+			    padding: 10px;
+			    background: rgba(134,120,120,0.6);
+			    color: black;
+			    font-weight: bold;
 			}
 
 			a:hover{
 				background: #2EBC99;
 				color: black;
+			}
+			a.logoutLink:hover{
+				background: red;
+				color: white;
 			}
 
 		}
@@ -176,8 +175,20 @@ img {
 	}
 }
 
-//NAVIGATION
+//BEER 101
 
+.beer-facts {
+    background: url(../images/beer101.jpg);
+    background-size: cover;
+    width: 100vw;
+    background-attachment: fixed;
+}
 
+.fact-div {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    margin: 15px 50px;
+    border: 2px solid black;
+}
 
 

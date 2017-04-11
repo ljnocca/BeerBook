@@ -21,8 +21,8 @@ const Banner = React.createClass({
 	 				</li>
 
 	 				<li className="navItem">
-	 					<a href="#profile" className="navLink">
-	 						My Profile
+	 					<a href="#search" className="navLink">
+	 						Search
 	 					</a>
 	 				</li>
 
@@ -33,14 +33,20 @@ const Banner = React.createClass({
 	 				</li>
 
 	 				<li className="navItem">
+	 					<a href="#pub" className="navLink">
+	 						The PUB
+	 					</a>
+	 				</li>
+
+	 				<li className="navItem">
 	 					<a href="#recommendations" className="navLink">
 	 						Beers Recommended to Me
 	 					</a>
 	 				</li>
 
 	 				<li className="navItem">
-	 					<a href="#search" className="navLink">
-	 						Search
+	 					<a href="#learn" className="navLink">
+	 						Beer 101
 	 					</a>
 	 				</li>
 

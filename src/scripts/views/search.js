@@ -79,7 +79,7 @@ const Beer = React.createClass({
 		return(
 			<div className='beerDiv'>
 				<h2>{beerName}</h2>
-				<button className='like' onClick={this.addToFavorites}>Favorite!</button>
+				<button className='like' onClick={this.addToFavorites}>&hearts;</button>
 				<h3>{beerStyle? beerStyle.category.name: ''}</h3>
 
 				<img src={beerLabel ? this.props.beerModel.get('labels').medium : 'images/defaultBeer.jpg'}/>
