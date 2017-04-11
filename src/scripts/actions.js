@@ -1,8 +1,26 @@
 import STORE from './store.js'
 import {BeerCollection} from './models/beerCollection.js'
-import {BeerModel} from './models/beerCollection.js'
+import {FavModel} from './models/beerCollection.js'
 import config from './../../config/secrets.js'
 import User from './models/userModel.js'
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-bottom-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
 
 var beerKey = config.key
 
@@ -12,22 +30,40 @@ var ACTIONS = {
 			userName: User.getCurrentUser().get('name'),
 			userId: User.getCurrentUser().get('_id')
 		})
-		var newFav = new BeerModel(beerData.attributes)
+		var newFav = new FavModel(beerData.attributes)
 		newFav.save()
 			.then(
 				function(response) { // SUCCESS
-					alert('saved your beer!')
+					toastr.success('Your beer has been saved as a favorite!')
 				},
 				function(err) { // FAILURE
-					alert('problem saving your favorite!')
+					toastr.error('Problem saving your favorite!')
 					console.log(err)
 				}
 			)
 	},
 	deleteFavorite: function(beerModel){
+		beerModel.destroy()
+			.done(ACTIONS.fetchFavoritesByUser)
+			.fail(
+				function(err){
+					toastr.error('Problem deleting your beer!')
+					console.log(err)
+				})
 
 	},
 	fetchFavoritesByUser: function(inputID){
+		var beerColl = STORE.get('favCollection')
+		beerColl.fetch({
+			data: {
+				userId: inputID
+			}
+		})
+			.then(function(){
+				STORE.set({
+					favCollection: beerColl
+				})
+			})
 
 	},
 	searchBeer:function(searchString){
@@ -49,12 +85,12 @@ var ACTIONS = {
 		User.logout()
 			.done(
 				function(resp) {
-					alert('you logged out!')
+					toastr.info('You logged out!')
 					location.hash = 'login'
 				})
 			.fail(
 				function(err) {
-					alert('error logging out!')
+					toastr.error('Error logging out!')
 					console.log(err)
 				})
 	},
@@ -62,13 +98,13 @@ var ACTIONS = {
 		User.login(email,password)
 			.done(
 				function(resp) {
-					alert('logged in!')
+					toastr.success(`${resp.email} logged in!`)
 					console.log(resp)
-					location.hash = 'profile'
+					location.hash = 'search'
 				})
 			.fail(
 				function(err) {
-					alert('problem logging in!')
+					toastr.error('Problem logging in!')
 					console.log(err)
 				})
 	},
@@ -76,13 +112,12 @@ var ACTIONS = {
 		User.register(userData)
 			.done(
 				function(resp) {
-					alert(`new user ${resp.email} registered`)
 					console.log(resp)
 					ACTIONS.logUserIn(userData.email, userData.password)
 				})
 			.fail(
 				function(err) {
-					alert('problem registering user!')
+					toastr.error('Problem registering user!')
 					console.log(err)
 				})
 	}

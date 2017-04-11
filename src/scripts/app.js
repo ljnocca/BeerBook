@@ -14,15 +14,15 @@ import STORE from './store.js'
 const app = function() {
   var BeerRouter = Backbone.Router.extend({
   	routes:{
-      'favorites': 'showFavorites',
+      'favorites/user/:id': 'showFavorites',
   		'recommendations': 'showRecommendations',
   		'login':'showLoginPage',
   		'profile': 'showProfile',
   		'search': 'showSearch',
   		'*default': 'handleRedirect'
   	},
-    showFavorites: function(){
-      ReactDOM.render(<Favorites /> ,document.querySelector('.container'))
+    showFavorites: function(id){
+      ReactDOM.render(<Favorites userId={id}/> ,document.querySelector('.container'))
     },
   	showRecommendations: function(){
   		ReactDOM.render(<Recommendations /> ,document.querySelector('.container'))

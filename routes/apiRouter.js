@@ -49,6 +49,7 @@ var Favorites = require('../db/schema.js').Favorites
     
     apiRouter
       .get('/favorites', function(request, response){
+        console.log(request.query)
         Favorites.find(request.query, function(error, records){
           if (error){
             return response.status(400).json(error)

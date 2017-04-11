@@ -10,11 +10,13 @@ const usersSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 })
 
+//is userName below necessary? where is it used?
+
 const favoritesSchema = new mongoose.Schema({
   userName: {type: String, required: true},
   userId: {type: String, required: true},
 	name: {type: String, required: true},
-  label: {type: mongoose.Schema.Types.Mixed},
+  labels: {type: mongoose.Schema.Types.Mixed},
   style: {type: mongoose.Schema.Types.Mixed},
   abv: {type: mongoose.Schema.Types.Mixed},
   ibu: {type: mongoose.Schema.Types.Mixed},

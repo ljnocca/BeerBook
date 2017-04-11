@@ -9,9 +9,7 @@ const Login = React.createClass({
 
 	 		<div className='login-page'>
 	 			<Banner />
-	 			<h2>Register</h2>
 	 			<RegisterForm />
-	 			<h2>Log In</h2>
 	 			<LoginForm />
 	 		</div>
 	 	)
@@ -32,34 +30,37 @@ const RegisterForm = React.createClass({
 
 	render: function() {
 		return (
-			<form onSubmit={this._handleSubmit} className='register-form' >
-
-					<input 
+			<div className='splash-form'>
+				<h2>Register</h2>
+				<form onSubmit={this._handleSubmit}  >
+						<input 
 						className="formField"
 						type="text" 
 						name="yourName"
 						placeholder="enter your name"
 						/>
 
-					 <input 
+						 <input 
 						className="formField"
 					 	type="text" 
 					 	name="email"
 					 	placeholder="enter your email"
 					 	/>
 
-					<input 
+						<input 
 						className="formField"
 						type="password" 
 						name="password" 
 						placeholder="enter your password"
 						/>
 
-				<button className="submitButton" type="submit">submit</button>
-			</form>
+					<button className="submitButton" type="submit">submit</button>
+				</form>
+			</div>
 			)
 	}
 })
+
 
 
 const LoginForm = React.createClass({
@@ -70,21 +71,24 @@ const LoginForm = React.createClass({
 
 	render: function() {
 		return (
-			<form onSubmit={this._handleSubmit} className='login-form' >
-					 <input 
-						className="formField"
-					 	type="text" 
-					 	name="email"
-					 	placeholder="enter your email"
-					 	 />
-					<input 
-						className="formField"
-						type="password" 
-						name="password" 
-						placeholder="enter your password"
-						/>
-				<button className="submitButton" type="submit">submit</button>
-			</form>
+			<div className='splash-form'>
+				<h2>Log In</h2>
+				<form onSubmit={this._handleSubmit} className='login-form' >
+						 <input 
+							className="formField"
+						 	type="text" 
+						 	name="email"
+						 	placeholder="enter your email"
+						 	 />
+						<input 
+							className="formField"
+							type="password" 
+							name="password" 
+							placeholder="enter your password"
+							/>
+					<button className="submitButton" type="submit">submit</button>
+				</form>
+			</div>
 			)
 	}
 })

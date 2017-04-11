@@ -24,18 +24,20 @@ const Search = React.createClass({
 	render: function() {
 
 	 	return (
-	 		<div className='login-page'>
+	 		<div className='search-page'>
 	 			<Banner />
-	 			<h2>Browse Beer Stuff</h2>
-	 			<form onSubmit={this._handleSubmit} className='form-group register-form' >
-						<input 
-							className="formField"
-							type="text" 
-							name="beerSearch"
-							placeholder="enter your beer search"
-						/>
-					<button className="submitButton" type="submit">submit</button>
-				</form>
+	 			<div className="splash-form">
+		 			<h2>Browse Beer Stuff</h2>
+		 			<form onSubmit={this._handleSubmit} className='search-form' >
+							<input 
+								className="formField"
+								type="text" 
+								name="beerSearch"
+								placeholder="enter your beer search"
+							/>
+						<button className="submitButton" type="submit">Search</button>
+					</form>
+				</div>
 	 			<Beers beerCollection={this.state.beerCollection}/>
 	 		</div>
 	 	)
@@ -94,7 +96,5 @@ const Beer = React.createClass({
 		)
 	}
 })
-
-
 
 export default Search

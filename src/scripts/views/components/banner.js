@@ -8,6 +8,7 @@ const Banner = React.createClass({
 	render: function(){
 
 		var welcomeText = User.getCurrentUser() ? `Welcome ${User.getCurrentUser().get('name')}!` : ''
+	 	var myFavorites = User.getCurrentUser() ? "#favorites/user/" + User.getCurrentUser().get('_id') : ''
 	 	return (
 	 		<div className='banner' >
 	 			<h1 id="title">BeerBook</h1>
@@ -26,7 +27,7 @@ const Banner = React.createClass({
 	 				</li>
 
 	 				<li className="navItem">
-	 					<a href="#favorites" className="navLink">
+	 					<a href={myFavorites} className="navLink">
 	 						My Favorites
 	 					</a>
 	 				</li>

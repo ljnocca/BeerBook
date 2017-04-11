@@ -18,6 +18,7 @@ h1 {
 
 h2 {
 	font-family: "Open Sans";
+	text-align: center;
 }
 
 p {
@@ -59,14 +60,74 @@ h1#title {
     width: 100vw;
 }
 
-.register-form, .login-form{
-	text-align: center;
+.search-page {
+    background: url(../images/beerBubbles.jpg);
+    background-size: cover;
+    width: 100vw;
+    background-attachment: fixed;
 }
 
-input.formField {
-    display: block;
+
+
+
+
+//FORM
+.splash-form{
+    max-width: 400px;
     margin: 10px auto;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.4);
 }
+.splash-form h1{
+    background: #43D1AF;
+    padding: 20px 0;
+    font-size: 140%;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+    margin: -16px -16px 16px -16px;
+}
+.splash-form input[type="text"],
+.splash-form input[type="password"]
+{
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 3%;
+    color: #555;
+    font: 95% Arial, Helvetica, sans-serif;
+}
+.splash-form input[type="text"]:focus,
+.splash-form input[type="password"]:focus,
+{
+    box-shadow: 0 0 5px #43D1AF;
+    padding: 3%;
+    border: 1px solid #43D1AF;
+}
+
+button.submitButton {
+    width: 100%;
+    padding: 3%;
+    background: #43D1AF;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+}
+button.submitButton:hover{
+	background: #2EBC99;
+}
+
+
+
+
+
+
+
 
 //SEARCH PAGE
 img {
@@ -93,7 +154,7 @@ img {
 			}
 
 			a:hover{
-				background: $sunny;
+				background: #2EBC99;
 				color: black;
 			}
 
@@ -104,7 +165,8 @@ img {
 		flex-wrap: wrap;
 
 		div{
-			background: rgba(156, 142, 142, 0.4);
+			background: rgba(0, 0, 0, 0.4);
+			color: white;
 			border: 1px solid black;
 		    padding: 10px;
 		    margin: 10px;
