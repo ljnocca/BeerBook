@@ -76,6 +76,7 @@ const Beer = React.createClass({
 		var beerOrganic = this.props.beerModel.get('isOrganic')
 		var beerABV = this.props.beerModel.get('abv')
 		var beerIBU = this.props.beerModel.get('ibu')
+		var beerAvailability = this.props.beerModel.get('available')
 		return(
 			<div className='beerDiv'>
 				<h2>{beerName}</h2>
@@ -86,11 +87,15 @@ const Beer = React.createClass({
 				<h5>{beerABV ? `ABV: ${beerABV}%`: ''}</h5>
 				<h5>{beerIBU ? `IBU: ${beerIBU}`: ''}</h5>
 
+				<h3>{beerAvailability ? 'Availability': ''}</h3>
+				<p>{beerAvailability ? beerAvailability.description : ''}</p>
+
 				<h3>{beerDescription ? 'Beer Description': ''}</h3>
 				<p>{beerDescription ? beerDescription: ''}</p>
 
 				<h3>{beerFoodPairing? 'Food Pairings': ''}</h3>
 				<p>{beerFoodPairing? beerFoodPairing: ''}</p>
+
 				<p>{beerOrganic ? `Organic? ${beerOrganic}`: ''}</p>
 			</div>
 		)

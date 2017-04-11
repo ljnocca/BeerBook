@@ -3,12 +3,30 @@ import React from 'react'
 import ACTIONS from './../actions.js'
 import Banner from './components/banner.js'
 
+toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": true,
+  "positionClass": "toast-bottom-full-width",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+
 const Login = React.createClass({
 	 render: function() {
 	 	return (
 
 	 		<div className='login-page'>
-	 			<Banner />
+	 			<h1 id="title">BeerBook</h1>
 	 			<RegisterForm />
 	 			<LoginForm />
 	 		</div>
@@ -26,6 +44,10 @@ const RegisterForm = React.createClass({
 				password: formEl.password.value
 			}
 		ACTIONS.registerUser(userData)
+	},
+
+	denyAccess: function(){
+		toastr.error("¯\_(ツ)_/¯ You must be of legal drinking age to view this website ¯\_(ツ)_/¯ ")
 	},
 
 	render: function() {
@@ -54,7 +76,11 @@ const RegisterForm = React.createClass({
 						placeholder="enter your password"
 						/>
 
-					<button className="submitButton" type="submit">submit</button>
+						<h2>Are you at least 21 years of age?</h2>
+
+					<button className="tooYoung" onClick={this.denyAccess}> Not quite yet!</button>
+
+					<button className="submitButton" type="submit">Yes, Register Me!</button>
 				</form>
 			</div>
 			)
@@ -86,7 +112,7 @@ const LoginForm = React.createClass({
 							name="password" 
 							placeholder="enter your password"
 							/>
-					<button className="submitButton" type="submit">submit</button>
+					<button className="loginButton" type="submit">Log Me In</button>
 				</form>
 			</div>
 			)

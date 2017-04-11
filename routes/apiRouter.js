@@ -4,7 +4,11 @@ let helpers = require('../config/helpers.js')
 
 let User = require('../db/schema.js').User
 var Favorites = require('../db/schema.js').Favorites
-  
+var Recommendations = require('../db/schema.js').Recommendations
+ 
+ //----------------------------------- 
+ //USERS
+ //----------------------------------- 
   apiRouter
     .get('/users', function(req, res){
       User.find(req.query , "-password", function(err, results){
@@ -45,7 +49,9 @@ var Favorites = require('../db/schema.js').Favorites
       })  
     })
 
-    // Routes for a Model(resource) should have this structure
+ //----------------------------------- 
+ //FAVORITES
+ //----------------------------------- 
     
     apiRouter
       .get('/favorites', function(request, response){
@@ -82,6 +88,53 @@ var Favorites = require('../db/schema.js').Favorites
 
       .put('/favorites/:favID', function(request,response){
         Favorites.findByIdAndUpdate(request.params.favID,request.body,{new: true}, function(error, record){
+          if (error){
+            console.log(response)
+            return response.status(400).json(error)
+          }
+          response.json(record)
+        })
+      })
+
+ //----------------------------------- 
+ //RECOMMENDATIONS
+ //----------------------------------- 
+
+    apiRouter
+      .get('/recommendations', function(request, response){
+        console.log(request.query)
+        Recommendations.find(request.query, function(error, records){
+          if (error){
+            return response.status(400).json(error)
+          }
+          response.json(records)
+        })
+      })
+
+      .post('/recommendations', function(request,response){
+        var newFavorite = new Recommendations(request.body)
+        newRecommendation.save(function(error,record){
+          if (error){
+            return response.status(400).json(error)
+          }
+          response.json(record)
+        })
+      })
+
+      .delete('/recommendations/:recID', function(request,response){
+        Recommendations.remove({_id: request.params.recID}, function(error){
+          if (error){
+            return response.status(400).json(error)
+          }
+          response.json({
+            msg: `Recommendation with id ${request.params.recID} has been deleted.`,
+            id: request.params.recID
+          })
+        })
+      })
+
+      .put('/recommendations/:recID', function(request,response){
+        Recommendations.findByIdAndUpdate(request.params.recID,request.body,{new: true}, function(error, record){
           if (error){
             console.log(response)
             return response.status(400).json(error)

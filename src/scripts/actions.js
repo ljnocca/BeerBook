@@ -9,7 +9,7 @@ toastr.options = {
   "debug": false,
   "newestOnTop": false,
   "progressBar": false,
-  "positionClass": "toast-bottom-right",
+  "positionClass": "toast-top-right",
   "preventDuplicates": false,
   "onclick": null,
   "showDuration": "300",
@@ -42,9 +42,9 @@ var ACTIONS = {
 				}
 			)
 	},
-	deleteFavorite: function(beerModel){
+	deleteFavorite: function(userId, beerModel){
 		beerModel.destroy()
-			.done(ACTIONS.fetchFavoritesByUser)
+			.done(ACTIONS.fetchFavoritesByUser(userId))
 			.fail(
 				function(err){
 					toastr.error('Problem deleting your beer!')
@@ -120,6 +120,9 @@ var ACTIONS = {
 					toastr.error('Problem registering user!')
 					console.log(err)
 				})
+	},
+	recommendBeer: function(beerModel){
+
 	}
 }
 

@@ -16,9 +16,19 @@ const Banner = React.createClass({
 
 	 				<li className="navItem">
 	 					<a href="#login" className="navLink">
-	 						Login / Signup
+	 						Log In
 	 					</a>
 	 				</li>
+
+	 				<li className="navItem">
+	 					<a onClick={ACTIONS.logout} className="logoutLink">
+	 						Log Out
+	 					</a>
+	 				</li>
+
+	 			</ul>
+
+	 			<ul className="navigation">
 
 	 				<li className="navItem">
 	 					<a href="#search" className="navLink">
@@ -49,13 +59,7 @@ const Banner = React.createClass({
 	 						Beer 101
 	 					</a>
 	 				</li>
-
-	 				<li className="navItem">
-	 					<a onClick={ACTIONS.logout} className="logoutLink">
-	 						Log Out
-	 					</a>
-	 				</li>
-	 				
+	
 	 			</ul>
 	 			<h2>
 	 				{welcomeText}

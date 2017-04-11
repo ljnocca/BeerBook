@@ -10,14 +10,13 @@ const usersSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 })
 
-//is userName below necessary? where is it used?
-
 const favoritesSchema = new mongoose.Schema({
   userName: {type: String, required: true},
   userId: {type: String, required: true},
 	name: {type: String, required: true},
   labels: {type: mongoose.Schema.Types.Mixed},
   style: {type: mongoose.Schema.Types.Mixed},
+  available: {type: mongoose.Schema.Types.Mixed},
   abv: {type: mongoose.Schema.Types.Mixed},
   ibu: {type: mongoose.Schema.Types.Mixed},
   description: {type: mongoose.Schema.Types.Mixed},
@@ -26,17 +25,13 @@ const favoritesSchema = new mongoose.Schema({
   createdAt: {type: Date, default: Date.now}, 
 })
 
-// const recommendationsSchema = new mongoose.Schema({
-// 	beerName: { type: mongoose.Schema.types.objectId, 
-//               ref: 'Favorites',
-//               required: true
-//             }
-// })
+const recommendationsSchema = new mongoose.Schema({
+	userId: {type: String, required: true},
+  name: {type: String, required: true}
+})
 
 module.exports = {
   User: mongoose.model('User', usersSchema),
   Favorites: mongoose.model('Favorites', favoritesSchema),
+  Recommendations: mongoose.model('Recommendations', recommendationsSchema)
 }
-
-//require or optional
-//only recommmend from your favorites
