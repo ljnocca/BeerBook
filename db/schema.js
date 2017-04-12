@@ -26,8 +26,10 @@ const favoritesSchema = new mongoose.Schema({
 })
 
 const recommendationsSchema = new mongoose.Schema({
-	userId: {type: String, required: true},
-  name: {type: String, required: true}
+  recommendingUser: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+  targetUser: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+  beerFave: {type: mongoose.Schema.Types.ObjectId, ref: 'Favorites', required: true},
+  createdAt: {type: Date, default: Date.now}
 })
 
 module.exports = {

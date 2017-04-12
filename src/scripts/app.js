@@ -20,7 +20,7 @@ const app = function() {
       'favorites/user/:id': 'showFavorites',
   		'recommendations': 'showRecommendations',
   		'login':'showLoginPage',
-  		'pub': 'showProfile',
+  		'pub': 'showPub',
   		'search': 'showSearch',
       'learn': 'showBeerFacts',
   		'*default': 'handleRedirect'

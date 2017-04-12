@@ -102,17 +102,16 @@ var Recommendations = require('../db/schema.js').Recommendations
 
     apiRouter
       .get('/recommendations', function(request, response){
-        console.log(request.query)
-        Recommendations.find(request.query, function(error, records){
+        Recommendations.find(request.query).populate('targetUser recommendingUser beerFave').exec(function(error, records){
           if (error){
             return response.status(400).json(error)
           }
           response.json(records)
-        })
+        }) 
       })
 
       .post('/recommendations', function(request,response){
-        var newFavorite = new Recommendations(request.body)
+        var newRecommendation = new Recommendations(request.body)
         newRecommendation.save(function(error,record){
           if (error){
             return response.status(400).json(error)

@@ -8,13 +8,13 @@ toastr.options = {
   "closeButton": true,
   "debug": false,
   "newestOnTop": false,
-  "progressBar": false,
+  "progressBar": true,
   "positionClass": "toast-top-right",
   "preventDuplicates": false,
   "onclick": null,
   "showDuration": "300",
   "hideDuration": "1000",
-  "timeOut": "5000",
+  "timeOut": "3000",
   "extendedTimeOut": "1000",
   "showEasing": "swing",
   "hideEasing": "linear",
@@ -50,8 +50,8 @@ var ACTIONS = {
 					toastr.error('Problem deleting your beer!')
 					console.log(err)
 				})
-
 	},
+
 	fetchFavoritesByUser: function(inputID){
 		var beerColl = STORE.get('favCollection')
 		beerColl.fetch({
@@ -64,8 +64,43 @@ var ACTIONS = {
 					favCollection: beerColl
 				})
 			})
-
 	},
+
+
+
+	addRecommendation: function(favData, beerID){
+		favData.set({
+			recommendingUser: User.getCurrentUser().get('_id'),
+			// targetUser: ,
+			beerFave: beerID,
+
+		})
+		var newRec = new RecommendationModel(favData.attributes)
+		newRec.save()
+			.then(
+				function(response) { // SUCCESS
+					toastr.success('Your recommendation has been sent!')
+				},
+				function(err) { // FAILURE
+					toastr.error('Problem sending your recommendation!')
+					console.log(err)
+				}
+			)
+	},
+
+	fetchRecommendations: function (){
+		var recommendationColl = STORE.get('RecommendationCollection')
+		recommendationColl.fetch({
+			
+		})
+	},
+
+
+
+
+
+
+
 	searchBeer:function(searchString){
 		var beerInstance = new BeerCollection()
 		var promise = beerInstance.fetch({
@@ -120,9 +155,6 @@ var ACTIONS = {
 					toastr.error('Problem registering user!')
 					console.log(err)
 				})
-	},
-	recommendBeer: function(beerModel){
-
 	}
 }
 

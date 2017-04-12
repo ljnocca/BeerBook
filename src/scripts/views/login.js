@@ -4,16 +4,16 @@ import ACTIONS from './../actions.js'
 import Banner from './components/banner.js'
 
 toastr.options = {
-  "closeButton": false,
+  "closeButton": true,
   "debug": false,
   "newestOnTop": false,
   "progressBar": true,
-  "positionClass": "toast-bottom-full-width",
+  "positionClass": "toast-top-right",
   "preventDuplicates": false,
   "onclick": null,
   "showDuration": "300",
   "hideDuration": "1000",
-  "timeOut": "5000",
+  "timeOut": "3000",
   "extendedTimeOut": "1000",
   "showEasing": "swing",
   "hideEasing": "linear",
@@ -47,7 +47,7 @@ const RegisterForm = React.createClass({
 	},
 
 	denyAccess: function(){
-		toastr.error("¯\_(ツ)_/¯ You must be of legal drinking age to view this website ¯\_(ツ)_/¯ ")
+		toastr.error("¯\_(ツ)_/¯ You must be 21 to view this website ¯\_(ツ)_/¯ ")
 	},
 
 	render: function() {
@@ -78,10 +78,9 @@ const RegisterForm = React.createClass({
 
 						<h2>Are you at least 21 years of age?</h2>
 
-					<button className="tooYoung" onClick={this.denyAccess}> Not quite yet!</button>
-
 					<button className="submitButton" type="submit">Yes, Register Me!</button>
 				</form>
+				<button className="tooYoung" onClick={this.denyAccess}> Not quite yet!</button>
 			</div>
 			)
 	}

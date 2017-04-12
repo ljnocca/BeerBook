@@ -17,7 +17,6 @@ const Favorites = React.createClass({
 		return STORE.data
 	},
 	render: function() {
-		console.log(this.props)
 	 	return (
 	 		<div className='favs-page'>
 	 			<Banner />
@@ -50,9 +49,9 @@ const Beer = React.createClass({
 		ACTIONS.deleteFavorite(this.props.userId, this.props.beerModel)
 	},
 
-	recommendToUser: function(){
-		ACTIONS.recommendBeer(this.props.beerModel)
-	},
+	// recommendToUser: function(){
+	// 	ACTIONS.recommendBeer(this.props.beerModel)
+	// },
 
 	render: function(){
 		var beerName = this.props.beerModel.get('name')
@@ -68,7 +67,7 @@ const Beer = React.createClass({
 			<div className='beerDiv'>
 				<h2>{beerName}</h2>
 
-				<button className='recommend' onClick={this.recommendToUser}>Recommend This Beer!</button>
+				<button className='recommend'>Recommend This Beer!</button>
 
 				<h3>{beerStyle? beerStyle.category.name: ''}</h3>
 

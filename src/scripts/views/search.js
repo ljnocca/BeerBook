@@ -66,8 +66,6 @@ const Beer = React.createClass({
 	},
 
 	render: function(){
-
-		console.log(this.props.beerModel)
 		var beerName = this.props.beerModel.get('name')
 		var beerStyle = this.props.beerModel.get('style')
 		var beerLabel = this.props.beerModel.get('labels')
