@@ -10,8 +10,10 @@ import Favorites from './views/favorites.js'
 import Login from './views/login.js'
 import Pub from './views/pub.js'
 import Search from './views/search.js'
+import BeerDetails from './views/beerdetails.js'
 import BeerFacts from './views/beerFacts.js'
 
+import {BeerSearchCollection} from './models/beerCollection.js'
 
 
 const app = function() {
@@ -22,14 +24,15 @@ const app = function() {
   		'login':'showLoginPage',
   		'pub': 'showPub',
   		'search': 'showSearch',
+      'beerDetails/:BeerID': 'handleDetails',
       'learn': 'showBeerFacts',
   		'*default': 'handleRedirect'
   	},
     showFavorites: function(id){
       ReactDOM.render(<Favorites userId={id}/> ,document.querySelector('.container'))
     },
-  	showRecommendations: function(){
-  		ReactDOM.render(<Recommendations /> ,document.querySelector('.container'))
+  	showRecommendations: function(id){
+  		ReactDOM.render(<Recommendations userId={id}/> ,document.querySelector('.container'))
   	},
   	showLoginPage: function(){
   		ReactDOM.render(<Login /> ,document.querySelector('.container'))
@@ -40,6 +43,9 @@ const app = function() {
   	showSearch: function(){
   		ReactDOM.render(<Search /> ,document.querySelector('.container'))
   	},
+    handleDetails: function(BeerID){
+      ReactDOM.render(<BeerDetails beerID={BeerID}/>, document.querySelector('.container'))      
+    },
     showBeerFacts: function(){
       ReactDOM.render(<BeerFacts />, document.querySelector('.container'))
     },

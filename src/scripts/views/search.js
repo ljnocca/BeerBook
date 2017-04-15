@@ -3,6 +3,10 @@ import ACTIONS from './../actions.js'
 import STORE from './../store.js'
 import Banner from './components/banner.js'
 
+import User from './../models/userModel.js'
+
+var welcomeText = User.getCurrentUser() ? `Welcome ${User.getCurrentUser().get('name')}! Search for a beer!` : ''
+
 const Search = React.createClass({
 	componentWillMount:function(){
 		STORE.on('dataUpdated', () => {
@@ -69,32 +73,17 @@ const Beer = React.createClass({
 		var beerName = this.props.beerModel.get('name')
 		var beerStyle = this.props.beerModel.get('style')
 		var beerLabel = this.props.beerModel.get('labels')
-		var beerDescription = this.props.beerModel.get('description')
-		var beerFoodPairing = this.props.beerModel.get('foodPairings')
-		var beerOrganic = this.props.beerModel.get('isOrganic')
-		var beerABV = this.props.beerModel.get('abv')
-		var beerIBU = this.props.beerModel.get('ibu')
-		var beerAvailability = this.props.beerModel.get('available')
+
 		return(
-			<div className='beerDiv'>
-				<h2>{beerName}</h2>
-				<button className='like' onClick={this.addToFavorites}>&hearts;</button>
-				<h3>{beerStyle? beerStyle.category.name: ''}</h3>
+			<div className='single-beer'>
+					<h2>{beerName}</h2>
+					<button className='like' onClick={this.addToFavorites}>&hearts;</button>
+					<h3>{beerStyle? beerStyle.category.name: ''}</h3>
 
-				<img src={beerLabel ? this.props.beerModel.get('labels').medium : 'images/defaultBeer.jpg'}/>
-				<h5>{beerABV ? `ABV: ${beerABV}%`: ''}</h5>
-				<h5>{beerIBU ? `IBU: ${beerIBU}`: ''}</h5>
+				<a className="detailsATag" href={`#beerDetails/${this.props.beerModel.get('id')}`}>
+					<img className="beerImage" src={beerLabel ? this.props.beerModel.get('labels').medium : 'images/defaultBeer.jpg'}/>
+				</a>
 
-				<h3>{beerAvailability ? 'Availability': ''}</h3>
-				<p>{beerAvailability ? beerAvailability.description : ''}</p>
-
-				<h3>{beerDescription ? 'Beer Description': ''}</h3>
-				<p>{beerDescription ? beerDescription: ''}</p>
-
-				<h3>{beerFoodPairing? 'Food Pairings': ''}</h3>
-				<p>{beerFoodPairing? beerFoodPairing: ''}</p>
-
-				<p>{beerOrganic ? `Organic? ${beerOrganic}`: ''}</p>
 			</div>
 		)
 	}

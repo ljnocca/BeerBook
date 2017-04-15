@@ -1,13 +1,16 @@
 import Backbone from 'backbone'
-import {BeerCollection} from './models/beerCollection.js'
+import {BeerCollection,BeerModel} from './models/beerCollection.js'
 import {FavoritesCollection} from './models/beerCollection.js'
 import {RecommendationCollection} from './models/beerCollection.js'
+
 
 var STORE = Object.assign({}, Backbone.Events, {
 	data:{
 		beerCollection: new BeerCollection(),
+		beerModel: new BeerModel(),
 		favCollection: new FavoritesCollection(),
-		recommendationsCollection: new RecommendationCollection()
+		recommendationsCollection: new RecommendationCollection(),
+		activeBeerID: ''
 	},
 	get: function(prop) {
 		if (this.data[prop] === undefined) {

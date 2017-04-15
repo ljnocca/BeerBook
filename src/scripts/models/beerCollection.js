@@ -16,7 +16,7 @@ export var FavoritesCollection = Backbone.Collection.extend({
 //*****************************************
 
 export var BeerModel = Backbone.Model.extend({
-	url: '/proxy/brewery',
+	url: '/proxy/brewery'
 })
 
 export var BeerCollection = Backbone.Collection.extend({
@@ -26,6 +26,19 @@ export var BeerCollection = Backbone.Collection.extend({
 		return apiResponse.data
 	}
 })
+
+//*****************************************
+
+export var UserCollection = Backbone.Collection.extend({
+	url: '/api/users',
+	model: UserModel
+})
+
+export var UserModel = Backbone.Model.extend({
+	urlRoot: 'api/users/',
+	idAttribute: '_id'
+})
+
 
 //*****************************************
 
@@ -41,16 +54,6 @@ export var RecommendationCollection = Backbone.Collection.extend({
 	url:'/api/recommendations',
 	model: RecommendationModel
 })
-
-// FLOW
-
-// visit: page listing all users (searchable). biergarten, bar, whatever you want to call it.
-
-// click: a thumbnail for a user
-
-// visit: user's detail page.
-
-// click: "recommend" button
 
 // see: modal that allows you to scan your own favorites (dropdown, autocomplete, whatever)
 

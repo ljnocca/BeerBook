@@ -7,7 +7,6 @@ import User from './../../models/userModel.js'
 const Banner = React.createClass({
 	render: function(){
 
-		var welcomeText = User.getCurrentUser() ? `Welcome ${User.getCurrentUser().get('name')}!` : ''
 	 	var myFavorites = User.getCurrentUser() ? "#favorites/user/" + User.getCurrentUser().get('_id') : ''
 	 	return (
 	 		<div className='banner' >
@@ -61,9 +60,6 @@ const Banner = React.createClass({
 	 				</li>
 	
 	 			</ul>
-	 			<h2>
-	 				{welcomeText}
-	 			</h2>
 	 		</div>
 	 	)
  	}

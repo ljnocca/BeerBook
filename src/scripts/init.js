@@ -12,7 +12,7 @@ const init = function() {
 		return targetVal
 	}
 	var app_name = 'BeerBook'
-	var user = eval(findCookie(app_name + '_user'))
+	var user = JSON.parse(findCookie(app_name + '_user'))
 	if (user) {
 		localStorage.setItem(app_name + '_user',user)
 	}

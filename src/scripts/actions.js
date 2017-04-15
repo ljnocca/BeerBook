@@ -1,6 +1,8 @@
 import STORE from './store.js'
 import {BeerCollection} from './models/beerCollection.js'
 import {FavModel} from './models/beerCollection.js'
+import {BeerModel} from './models/beerCollection.js'
+import {RecommendationModel} from './models/beerCollection.js'
 import config from './../../config/secrets.js'
 import User from './models/userModel.js'
 
@@ -51,7 +53,6 @@ var ACTIONS = {
 					console.log(err)
 				})
 	},
-
 	fetchFavoritesByUser: function(inputID){
 		var beerColl = STORE.get('favCollection')
 		beerColl.fetch({
@@ -66,9 +67,19 @@ var ACTIONS = {
 			})
 	},
 
+	setActiveBeerID: function(beerID){
+		STORE.set({
+			activeBeerID: beerID
+		})
 
+	},
+	unsetActiveBeerID: function(){
+		STORE.set({
+			activeBeerID: null
+		})
 
-	addRecommendation: function(favData, beerID){
+	},
+	recommendBeer: function(favData, beerID){
 		favData.set({
 			recommendingUser: User.getCurrentUser().get('_id'),
 			// targetUser: ,
@@ -88,18 +99,35 @@ var ACTIONS = {
 			)
 	},
 
-	fetchRecommendations: function (){
-		var recommendationColl = STORE.get('RecommendationCollection')
+	fetchRecommendationsByUser: function (inputID){
+		var recommendationColl = STORE.get('recommendationsCollection')
 		recommendationColl.fetch({
-			
+			data:{
+				userId: inputID
+			}
 		})
+			.then(function(){
+				STORE.set({
+					recommendationsCollection: recommendationColl
+				})
+			})
 	},
 
 
-
-
-
-
+	fetchBeerByID:function(beerID){
+		var beerInstance = new BeerModel()
+		beerInstance.url = `/proxy/brewery/${beerID}`
+		var promise = beerInstance.fetch({
+			data:{
+				'key' : beerKey,
+			}
+		})
+		promise.then(()=>{
+			STORE.set({
+				beerModel: beerInstance
+			})
+		})
+	},
 
 	searchBeer:function(searchString){
 		var beerInstance = new BeerCollection()

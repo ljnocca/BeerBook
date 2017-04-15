@@ -6,6 +6,8 @@ var request = require('request');
 
 var breweryURL = 'http://api.brewerydb.com/v2/search/'
 
+var breweryBeerDetailsURL = 'http://api.brewerydb.com/v2/beer/'
+
 
 // http://api.brewerydb.com/v2/search/?key=10b5b1f230397b88f1e4f6526073ea6f&q=guinness
 
@@ -21,6 +23,7 @@ var makeQueryString = function(obj){
 // client sends a GET request with the pattern /proxy/brewery?q=guiness
 proxyRouter.get('/brewery', function(clientRequest,clientResponse) {
 	clientRequest.query.key= apiKey
+	//key wasn't included on the query string because we're protecting it in secrets. it is being added to the query object
 	var queryString = makeQueryString(clientRequest.query)
 	request(breweryURL+queryString, function (error, brewResponse, body){
 		if(error){
@@ -30,12 +33,22 @@ proxyRouter.get('/brewery', function(clientRequest,clientResponse) {
 
 	})
 
-	
 	// here we'll use a node library to make a request using our key and anything else sent int he query string from the client
 		// client's query string is referenced as an object with request.query
 	
 	// once we get a response back from brewery api, send it back in our own response with repsonse.json
 
+})
+
+proxyRouter.get('/brewery/:beerID', function(clientRequest, clientResponse){
+	var id = clientRequest.params.beerID
+	request(`${breweryBeerDetailsURL}${id}?key=${apiKey}`, function(error, brewResponse, body){
+		if(error){
+			return clientResponse.status(400).json(error)
+		}
+		clientResponse.json(JSON.parse(body))
+	})
+			
 })
 
 module.exports = proxyRouter

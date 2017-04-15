@@ -21,7 +21,10 @@ const Favorites = React.createClass({
 	 		<div className='favs-page'>
 	 			<Banner />
 	 			<h2>Your Favorites</h2>
-	 			<Beers beerCollection={this.state.favCollection}/>
+	 			<Beers 
+	 			beerCollection={this.state.favCollection}
+	 			activeBeerID={this.state.activeBeerID}
+	 			/>
 	 		</div>
 	 	)
  	}
@@ -31,6 +34,7 @@ const Beers = React.createClass({
 	makeBeers: function(model){
 		return <Beer 
 					beerModel={model}
+					activeBeerID={this.props.activeBeerID}
 					key={model.cid}
 				/>
 	},
@@ -49,43 +53,30 @@ const Beer = React.createClass({
 		ACTIONS.deleteFavorite(this.props.userId, this.props.beerModel)
 	},
 
-	// recommendToUser: function(){
-	// 	ACTIONS.recommendBeer(this.props.beerModel)
-	// },
+	handleClick: function(){
+		ACTIONS.setActiveBeerID(this.props.beerModel.get('id'))
+	},
 
 	render: function(){
+		console.log(this.props)
 		var beerName = this.props.beerModel.get('name')
 		var beerStyle = this.props.beerModel.get('style')
 		var beerLabel = this.props.beerModel.get('labels')
-		var beerDescription = this.props.beerModel.get('description')
-		var beerFoodPairing = this.props.beerModel.get('foodPairings')
-		var beerOrganic = this.props.beerModel.get('isOrganic')
-		var beerABV = this.props.beerModel.get('abv')
-		var beerIBU = this.props.beerModel.get('ibu')
-		var beerAvailability = this.props.beerModel.get('available')
+
+		var beerDiv = 'single-beer'
+
+		if(this.props.activeBeerID === this.props.beerModel.get('id')){
+			beerDiv = 'active'
+		}
 		return(
-			<div className='beerDiv'>
+			<div className={beerDiv}>
 				<h2>{beerName}</h2>
-
-				<button className='recommend'>Recommend This Beer!</button>
-
+				<button className='recommend' onClick={this.handleClick}>Recommend This Beer!</button>
 				<h3>{beerStyle? beerStyle.category.name: ''}</h3>
-
 				<img src={beerLabel ? this.props.beerModel.get('labels').medium : 'images/defaultBeer.jpg'}/>
-				<h5>{beerABV ? `ABV: ${beerABV}%`: ''}</h5>
-				<h5>{beerIBU ? `IBU: ${beerIBU}`: ''}</h5>
-
-				<h3>{beerAvailability ? 'Availability': ''}</h3>
-				<p>{beerAvailability ? beerAvailability.description : ''}</p>
-
-				<h3>{beerDescription ? 'Beer Description': ''}</h3>
-				<p>{beerDescription ? beerDescription: ''}</p>
-
-				<h3>{beerFoodPairing? 'Food Pairings': ''}</h3>
-				<p>{beerFoodPairing? beerFoodPairing: ''}</p>
-
-				<p>{beerOrganic ? `Organic? ${beerOrganic}`: ''}</p>
 				<button className='delete' onClick={this.deleteFromFavorites}>Remove From Favorites</button>
+
+
 			</div>
 		)
 	}

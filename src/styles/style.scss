@@ -1,13 +1,41 @@
 * {
 	box-sizing: border-box;
 }
+//------------------------------------------------//
+// COLORS
+    //BROWNS//
+    $vibrant:         rgb(214,195,179);
+    $darkVibrant:     rgb(196,180,161);
+    $muted:           rgb(189,146,111);
+    $deer:            rgb(190, 138, 100);
+    $lightVibrant:    rgb(132,100,65);
+
+    //BLUES//
+    $iceberg:         rgb(115, 199, 206);
+    $cadetBlue:       rgb(88, 148, 163);
+
+    //YELLOWS//
+    $sunny:           rgb(253, 247, 117);
+
+    //ORANGES//
+    $orangy:          rgb(249, 153, 11);
+//------------------------------------------------//
+
 
 //------------------------------------------------//
+
 //FONTS
 h1 {
 	font-family: 'Bilbo', cursive;
 	color: #decfb1;
     text-align: center;
+}
+
+h1#title {
+    background: rgba(0,0,0,0.8);
+    font-size: 75px;
+    margin: 0;
+    padding-top: 5px;
 }
 
 h2 {
@@ -18,33 +46,8 @@ h2 {
 p {
 	font-family: "Inconsolata";
 }
-//------------------------------------------------//
-// COLORS
-	//BROWNS//
-	$vibrant:         rgb(214,195,179);
-	$darkVibrant:     rgb(196,180,161);
-	$muted:           rgb(189,146,111);
-	$deer:			  rgb(190, 138, 100);
-	$lightVibrant:    rgb(132,100,65);
 
-	//BLUES//
-	$iceberg:		  rgb(115, 199, 206);
-	$cadetBlue: 	  rgb(88, 148, 163);
 
-	//YELLOWS//
-	$sunny: 		  rgb(253, 247, 117);
-
-	//ORANGES//
-	$orangy: 		  rgb(249, 153, 11);
-//------------------------------------------------//
-
-//BANNER
-h1#title {
-    background: rgba(0,0,0,0.4);
-    font-size: 75px;
-    margin: 0;
-    padding-top: 5px;
-}
 
 //LOGIN PAGE
 .login-page {
@@ -150,6 +153,11 @@ img {
     background-attachment: fixed;
 }
 
+.detailsATag{
+    color: white;
+    text-decoration: none;
+}
+
 
 button.like {
     background: #e43f3f;
@@ -165,19 +173,18 @@ button.like {
 			display: inline-block;
 
 			a {
+                color: white;
 				text-decoration: none;
 			    display: inline-block;
 			    cursor: pointer;
 			    margin: 10px;
 			    padding: 10px;
-			    background: rgba(134,120,120,0.6);
-			    color: black;
+			    background: rgba(0,0,0,0.8);
 			    font-weight: bold;
 			}
 
 			a:hover{
 				background: #2EBC99;
-				color: white;
 				box-shadow: 0px 0px 14px 3px white;
 			}
 			a.logoutLink:hover{
@@ -192,22 +199,32 @@ button.like {
 		display: flex;
 		flex-wrap: wrap;
 
-		div{
-			background: rgba(0, 0, 0, 0.6);
-			color: white;
-			border: 1px solid black;
-		    padding: 10px;
-		    margin: 10px;
-		    width: 30%;
-		    text-align: center;
-		}
+		
 	}
+}
+
+.single-beer{
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+.single-beer.active{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
 }
 
 //FAVORITES
 .favs-page {
-    background: url(../images/beerBubbles.jpg);
-    background-size: cover;
+    background: url(../images/beerLove.png);
     width: 100vw;
     background-attachment: fixed;
 }
@@ -235,7 +252,7 @@ button.delete {
 }
 
 .fact-div {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.7);
     padding: 10px;
     margin: 15px 50px;
     border: 2px solid black;
