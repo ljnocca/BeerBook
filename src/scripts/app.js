@@ -20,7 +20,7 @@ const app = function() {
   var BeerRouter = Backbone.Router.extend({
   	routes:{
       'favorites/user/:id': 'showFavorites',
-  		'recommendations': 'showRecommendations',
+  		'recommendations/:id': 'showRecommendations',
   		'login':'showLoginPage',
   		'pub': 'showPub',
   		'search': 'showSearch',

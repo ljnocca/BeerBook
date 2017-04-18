@@ -14,7 +14,7 @@ const init = function() {
 	var app_name = 'BeerBook'
 	var user = JSON.parse(findCookie(app_name + '_user'))
 	if (user) {
-		localStorage.setItem(app_name + '_user',user)
+		localStorage.setItem(app_name + '_user',JSON.stringify(user))
 	}
 	else {
 		localStorage.removeItem(app_name + '_user')

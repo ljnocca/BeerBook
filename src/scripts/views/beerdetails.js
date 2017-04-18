@@ -17,6 +17,7 @@ const BeerDetails = React.createClass({
 		return STORE.data
 	},
 	render: function() {
+		console.log('model',this.state.beerModel)
 	 	return (
 	 		<div>
 	 			<Banner />
@@ -30,18 +31,33 @@ const BeerDetails = React.createClass({
 
 
 const Details = React.createClass({
+	addToFavorites: function(){
+		ACTIONS.addFavorite(this.props.details.get('data'))
+	},
 	render: function() {
-		var beerDetails=this.props.details.get('data')
-
+		var beerDetails=this.props.details.attributes
+		console.log(this.props.details)
 			return (
-				<div className="beers">
-					<h2>{beerDetails?`${beerDetails.name} Details`:''}</h2>
-					<h5>{beerDetails?beerDetails.style.category.name:''}</h5>
-					<p>{beerDetails?beerDetails.abv:''}</p>
-					<p>{beerDetails?beerDetails.ibu:''}</p>
-					<img src={beerDetails?beerDetails.labels.large:''} />
-					<p>{beerDetails?beerDetails.available.description:''}</p>
-					<p>{beerDetails?beerDetails.description:''}</p>
+				<div className="beerDetails">
+					<h2>{beerDetails ? `${beerDetails.name} Details`:''}</h2>
+					<div className='mainFacts'>
+						<button className='like' onClick={this.addToFavorites}>&hearts;</button>
+						<h3>{beerDetails ? `Style: ${beerDetails.style.category.name}`:''}</h3>
+						<h3>{beerDetails ? `ABV: ${beerDetails.abv}%`:''}</h3>
+						<h3>{beerDetails ? `IBU: ${beerDetails.ibu}`:''}</h3>
+					</div>
+					<div className='details'>
+						<div className='leftDetails'>
+							<img src={beerDetails?beerDetails.labels.large:'images/defaultBeer.jpg'} />
+						</div>
+						<div className='rightDetails'>
+							<h3>{beerDetails.available.description? `Availability`: ''}</h3>
+							<p>{beerDetails?beerDetails.available.description:''}</p>
+
+							<h3>{beerDetails.description? `Description`: ''}</h3>
+							<p>{beerDetails?beerDetails.description:''}</p>
+						</div>
+					</div>
 				</div>
 			)	
 	}

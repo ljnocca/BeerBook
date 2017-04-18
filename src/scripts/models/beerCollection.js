@@ -16,7 +16,29 @@ export var FavoritesCollection = Backbone.Collection.extend({
 //*****************************************
 
 export var BeerModel = Backbone.Model.extend({
-	url: '/proxy/brewery'
+	url: '/proxy/brewery',
+	defaults: {
+		style: {
+			category: {
+				name: ''
+			}
+		},
+		abv:'',
+		available:{
+			description:''
+		},
+		description:'',
+		ibu:'',
+		labels:{
+			icon: 'images/defaultBeer.jpg',
+			large: 'images/defaultBeer.jpg',
+			medium: 'images/defaultBeer.jpg'
+		},
+		name: ''
+	},
+	parse: function(rawResponse) {
+		return rawResponse.data ? rawResponse.data : rawResponse
+	}
 })
 
 export var BeerCollection = Backbone.Collection.extend({
@@ -29,16 +51,15 @@ export var BeerCollection = Backbone.Collection.extend({
 
 //*****************************************
 
-export var UserCollection = Backbone.Collection.extend({
-	url: '/api/users',
-	model: UserModel
-})
-
 export var UserModel = Backbone.Model.extend({
 	urlRoot: 'api/users/',
 	idAttribute: '_id'
 })
 
+export var UserCollection = Backbone.Collection.extend({
+	url: '/api/users',
+	model: UserModel
+})
 
 //*****************************************
 
@@ -54,12 +75,6 @@ export var RecommendationCollection = Backbone.Collection.extend({
 	url:'/api/recommendations',
 	model: RecommendationModel
 })
-
-// see: modal that allows you to scan your own favorites (dropdown, autocomplete, whatever)
-
-// select: one of your favorites
-
-// click: "Recommend!". 
 
 // invoke: ACTION that does what justin wrote below, passing in target user id and beerfave id....
 

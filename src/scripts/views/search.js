@@ -15,6 +15,7 @@ const Search = React.createClass({
 	},
 	componentWillUnmount:function(){
 		STORE.off('dataUpdated')
+		STORE.reset()
     },
 	getInitialState: function() {
 		return STORE.data
@@ -56,6 +57,7 @@ const Beers = React.createClass({
 				/>
 	},
 	render: function() {
+		console.log(this.props.beerCollection)
 		return (
 			<div className="beers">
 				{this.props.beerCollection.map(this.makeBeers)}				
@@ -70,15 +72,20 @@ const Beer = React.createClass({
 	},
 
 	render: function(){
-		var beerName = this.props.beerModel.get('name')
-		var beerStyle = this.props.beerModel.get('style')
-		var beerLabel = this.props.beerModel.get('labels')
-
+		var beerName= ''
+		var beerLabel = ''
+		var beerStyle= ''
+		if(this.props.beerModel){
+			var beerName = this.props.beerModel.get('name')
+			var beerStyle = this.props.beerModel.get('style')
+			var beerLabel = this.props.beerModel.get('labels')
+		}
+		
 		return(
 			<div className='single-beer'>
-					<h2>{beerName}</h2>
-					<button className='like' onClick={this.addToFavorites}>&hearts;</button>
-					<h3>{beerStyle? beerStyle.category.name: ''}</h3>
+				<h2>{beerName}</h2>
+				<button className='like' onClick={this.addToFavorites}>&hearts;</button>
+				<h3>{beerStyle? beerStyle.category.name: ''}</h3>
 
 				<a className="detailsATag" href={`#beerDetails/${this.props.beerModel.get('id')}`}>
 					<img className="beerImage" src={beerLabel ? this.props.beerModel.get('labels').medium : 'images/defaultBeer.jpg'}/>

@@ -17,7 +17,7 @@ const Recommendations = React.createClass({
 		return STORE.data
 	},
 	render: function() {
-		console.log(this.state.recommendationsCollection)
+		console.log(this)
 	 	return (
 	 		<div className='favs-page'>
 	 			<Banner />

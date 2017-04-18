@@ -27,66 +27,12 @@ toastr.options = {
 var beerKey = config.key
 
 var ACTIONS = {
-	addFavorite: function(beerData){
-		beerData.set({
-			userName: User.getCurrentUser().get('name'),
-			userId: User.getCurrentUser().get('_id')
-		})
-		var newFav = new FavModel(beerData.attributes)
-		newFav.save()
-			.then(
-				function(response) { // SUCCESS
-					toastr.success('Your beer has been saved as a favorite!')
-				},
-				function(err) { // FAILURE
-					toastr.error('Problem saving your favorite!')
-					console.log(err)
-				}
-			)
-	},
-	deleteFavorite: function(userId, beerModel){
-		beerModel.destroy()
-			.done(ACTIONS.fetchFavoritesByUser(userId))
-			.fail(
-				function(err){
-					toastr.error('Problem deleting your beer!')
-					console.log(err)
-				})
-	},
-	fetchFavoritesByUser: function(inputID){
-		var beerColl = STORE.get('favCollection')
-		beerColl.fetch({
-			data: {
-				userId: inputID
-			}
-		})
-			.then(function(){
-				STORE.set({
-					favCollection: beerColl
-				})
-			})
-	},
+	//--------------------------------------------------------//
+	//RECOMMENDATIONS
+	//--------------------------------------------------------//
 
-	setActiveBeerID: function(beerID){
-		STORE.set({
-			activeBeerID: beerID
-		})
-
-	},
-	unsetActiveBeerID: function(){
-		STORE.set({
-			activeBeerID: null
-		})
-
-	},
-	recommendBeer: function(favData, beerID){
-		favData.set({
-			recommendingUser: User.getCurrentUser().get('_id'),
-			// targetUser: ,
-			beerFave: beerID,
-
-		})
-		var newRec = new RecommendationModel(favData.attributes)
+	recommendBeer: function(recommendedData){
+		var newRec = new RecommendationModel(recommendedData)
 		newRec.save()
 			.then(
 				function(response) { // SUCCESS
@@ -113,7 +59,30 @@ var ACTIONS = {
 			})
 	},
 
+	fetchAllUsers: function(){
+		var userColl = STORE.get('userCollection')
+		userColl.fetch()
+		.then(function(){
+			STORE.set({
+				userCollection: userColl
+			})
+		})
+	},
+	closeModal: function() {
+		STORE.set({
+			modalShowing: false
+		})
+	},
 
+	showModal: function(beerMod) {
+		STORE.set({
+			modalShowing: true,
+			recommendBeer: beerMod
+		})
+	},
+	//--------------------------------------------------------//
+	//SEARCH, FAVORITES, DETAILS
+	//--------------------------------------------------------//
 	fetchBeerByID:function(beerID){
 		var beerInstance = new BeerModel()
 		beerInstance.url = `/proxy/brewery/${beerID}`
@@ -128,7 +97,6 @@ var ACTIONS = {
 			})
 		})
 	},
-
 	searchBeer:function(searchString){
 		var beerInstance = new BeerCollection()
 		var promise = beerInstance.fetch({
@@ -144,6 +112,48 @@ var ACTIONS = {
 			})
 		})
 	},
+	addFavorite: function(beerData){
+		beerData.set({
+			userName: User.getCurrentUser().get('name'),
+			userId: User.getCurrentUser().get('_id')
+		})
+		var newFav = new FavModel(beerData.attributes)
+		newFav.save()
+			.then(
+				function(response) { // SUCCESS
+					toastr.success('Your beer has been saved as a favorite!')
+				},
+				function(err) { // FAILURE
+					toastr.error('Problem saving your favorite!')
+					console.log(err)
+				}
+			)
+	},
+	fetchFavoritesByUser: function(inputID){
+		var beerColl = STORE.get('favCollection')
+		beerColl.fetch({
+			data: {
+				userId: inputID
+			}
+		})
+			.then(function(){
+				STORE.set({
+					favCollection: beerColl
+				})
+			})
+	},
+	deleteFavorite: function(userId, beerModel){
+		beerModel.destroy()
+			.done(ACTIONS.fetchFavoritesByUser(userId))
+			.fail(
+				function(err){
+					toastr.error('Problem deleting your beer!')
+					console.log(err)
+				})
+	},
+	//--------------------------------------------------------//
+	//REGISTER,LOGIN,LOGOUT
+	//--------------------------------------------------------//
 	logout: function() {
 		User.logout()
 			.done(
@@ -183,7 +193,9 @@ var ACTIONS = {
 					toastr.error('Problem registering user!')
 					console.log(err)
 				})
-	}
+	},
+
+	
 }
 
 export default ACTIONS
