@@ -63,14 +63,14 @@ const Modal = React.createClass({
 			<div className={modalClass} > 
 				<div className="form">
 		 			<h3>{this.state.recommendBeer.get('name')} </h3>
-		 			<button onClick={this._closeModal}>X</button>
+		 			<button className="tooYoung" onClick={this._closeModal}>X</button>
 		 			<form onSubmit={this._handleSubmit} className='recommendationForm'>
 						<select name="recomendee" >
 							<option disabled>who are you recommending to?</option>
 			 				{this.props.userCollection.map(this.createUserOptions)}	 				
 			 			</select>
-						<input name='comments' type='text' placeholder='Any comments on this beer?' />
-						<button type="submit">Send my recommendation!</button>
+						<input className="comments" name='comments' type='text' placeholder='Any comments on this beer?' />
+						<button className="loginButton" type="submit">Send my recommendation!</button>
 					</form>
 				</div>
 		 	</div>
