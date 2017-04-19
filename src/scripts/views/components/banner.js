@@ -37,13 +37,9 @@ const Banner = React.createClass({
 		 						My Favorites
 		 					</a>
 		 				</li>
+		 				
 		 				<li className="navItem">
-		 					<a href="#pub" className="navLink">
-		 						The PUB
-		 					</a>
-		 				</li>
-		 				<li className="navItem">
-		 					<a href={`#recommendations/${User.getCurrentUser().get('_id')}`} className="navLink">
+		 					<a href="#recommendations" className="navLink">
 		 						Beers Recommended to Me
 		 					</a>
 		 				</li>
@@ -60,3 +56,9 @@ const Banner = React.createClass({
 })
 
 export default Banner
+
+// <li className="navItem">
+// <a href="#pub" className="navLink">
+// The PUB
+// </a>
+// </li>

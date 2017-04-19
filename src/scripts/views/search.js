@@ -72,14 +72,10 @@ const Beer = React.createClass({
 	},
 
 	render: function(){
-		var beerName= ''
-		var beerLabel = ''
-		var beerStyle= ''
-		if(this.props.beerModel){
-			var beerName = this.props.beerModel.get('name')
-			var beerStyle = this.props.beerModel.get('style')
-			var beerLabel = this.props.beerModel.get('labels')
-		}
+		console.log(this.props.beerModel)
+		var beerName = this.props.beerModel.get('name')
+		var beerStyle = this.props.beerModel.get('style')
+		var beerLabel = this.props.beerModel.get('labels')
 		
 		return(
 			<div className='single-beer'>

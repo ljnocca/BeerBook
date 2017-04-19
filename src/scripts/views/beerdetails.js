@@ -35,27 +35,32 @@ const Details = React.createClass({
 		ACTIONS.addFavorite(this.props.details.get('data'))
 	},
 	render: function() {
-		var beerDetails=this.props.details.attributes
+		var beerDetails=this.props.details
+
+		var beerStyle = this.props.details.get('style')
+		var beerLabel = this.props.details.get('labels')
+		var beerAvailabilty = this.props.details.get('available')
+
 		console.log(this.props.details)
 			return (
 				<div className="beerDetails">
-					<h2>{beerDetails ? `${beerDetails.name} Details`:''}</h2>
+					<h2 className="viewTitle">{`${beerDetails.get('name')} Details`}</h2>
 					<div className='mainFacts'>
 						<button className='like' onClick={this.addToFavorites}>&hearts;</button>
-						<h3>{beerDetails ? `Style: ${beerDetails.style.category.name}`:''}</h3>
-						<h3>{beerDetails ? `ABV: ${beerDetails.abv}%`:''}</h3>
-						<h3>{beerDetails ? `IBU: ${beerDetails.ibu}`:''}</h3>
+						<h3>{`Style: ${beerStyle.category.name}`}</h3>
+						<h3>{`ABV: ${beerDetails.get('abv')}%`}</h3>
+						<h3>{`IBU: ${beerDetails.get('ibu')}`}</h3>
 					</div>
 					<div className='details'>
 						<div className='leftDetails'>
-							<img src={beerDetails?beerDetails.labels.large:'images/defaultBeer.jpg'} />
+							<img src={beerLabel?beerLabel.large:'images/defaultBeer.jpg'} />
 						</div>
 						<div className='rightDetails'>
-							<h3>{beerDetails.available.description? `Availability`: ''}</h3>
-							<p>{beerDetails?beerDetails.available.description:''}</p>
+							<h3>{beerAvailabilty? `Availability`: ''}</h3>
+							<p>{beerAvailabilty?beerAvailabilty.description:''}</p>
 
-							<h3>{beerDetails.description? `Description`: ''}</h3>
-							<p>{beerDetails?beerDetails.description:''}</p>
+							<h3>{beerDetails.get('description')? `Description`: ''}</h3>
+							<p>{beerDetails.get('description')? beerDetails.get('description'):''}</p>
 						</div>
 					</div>
 				</div>
@@ -64,3 +69,5 @@ const Details = React.createClass({
 })
 
 export default BeerDetails
+
+	

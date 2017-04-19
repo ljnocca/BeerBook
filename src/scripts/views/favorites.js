@@ -18,11 +18,11 @@ const Favorites = React.createClass({
 		return STORE.data
 	},
 	render: function() {
-
+		console.log('favcoll',this.state.favCollection)
 	 	return (
 	 		<div className='favs-page'>
 	 			<Banner />
-	 			<h2>Your Favorites</h2>
+	 			<h2 className="viewTitle">Your Favorites</h2>
 		 		<RecommendationModal />
 	 			<Beers 
 	 			beerCollection={this.state.favCollection}
@@ -56,9 +56,10 @@ const Beer = React.createClass({
 		ACTIONS.showModal(this.props.beerModel)
 	},
 	deleteFromFavorites: function(){
-		ACTIONS.deleteFavorite(this.props.userId, this.props.beerModel)
+		ACTIONS.deleteFavorite(User.getCurrentUser().get('_id'), this.props.beerModel)
 	},
 	render: function(){
+		console.log(this.props.beerModel)
 		var beerName = this.props.beerModel.get('name')
 		var beerStyle = this.props.beerModel.get('style')
 		var beerLabel = this.props.beerModel.get('labels')

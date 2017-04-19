@@ -43,6 +43,25 @@ export var BeerModel = Backbone.Model.extend({
 
 export var BeerCollection = Backbone.Collection.extend({
 	url: '/proxy/brewery',
+	defaults: {
+		style: {
+			category: {
+				name: ''
+			}
+		},
+		abv:'',
+		available:{
+			description:''
+		},
+		description:'',
+		ibu:'',
+		labels:{
+			icon: 'images/defaultBeer.jpg',
+			large: 'images/defaultBeer.jpg',
+			medium: 'images/defaultBeer.jpg'
+		},
+		name: ''
+	},
 	model: BeerModel,
 	parse: function(apiResponse){
 		return apiResponse.data
@@ -65,7 +84,26 @@ export var UserCollection = Backbone.Collection.extend({
 
 export var RecommendationModel = Backbone.Model.extend({
 	urlRoot: '/api/recommendations',
-	idAttribute: '_id'
+	idAttribute: '_id',
+	defaults: {
+		style: {
+			category: {
+				name: ''
+			}
+		},
+		abv:'',
+		available:{
+			description:''
+		},
+		description:'',
+		ibu:'',
+		labels:{
+			icon: 'images/defaultBeer.jpg',
+			large: 'images/defaultBeer.jpg',
+			medium: 'images/defaultBeer.jpg'
+		},
+		name: ''
+	},
 })
 
 export var RecommendationCollection = Backbone.Collection.extend({
@@ -73,15 +111,24 @@ export var RecommendationCollection = Backbone.Collection.extend({
 		return new Date(mod.get('createdAt')).getTime() * -1
 	},
 	url:'/api/recommendations',
-	model: RecommendationModel
+	model: RecommendationModel,
+	defaults: {
+		style: {
+			category: {
+				name: ''
+			}
+		},
+		abv:'',
+		available:{
+			description:''
+		},
+		description:'',
+		ibu:'',
+		labels:{
+			icon: 'images/defaultBeer.jpg',
+			large: 'images/defaultBeer.jpg',
+			medium: 'images/defaultBeer.jpg'
+		},
+		name: ''
+	},
 })
-
-// invoke: ACTION that does what justin wrote below, passing in target user id and beerfave id....
-
-// var newRec = new RecommendationModel({
-// 	recommendingUser: User.getCurrentUser().get("_id"),
-// 	targetUser: TARGET USER'S ID FROM WHEREVER YOU GET THAT,
-// 	beerFave: ID OF A BEER YOUVE SELECTED FROM YOUR FAVORITE LIST IN THE UI LEADING UP TO THIS POINT.
-// })
-
-// newRec.save().then( etc... )

@@ -20,7 +20,7 @@ const app = function() {
   var BeerRouter = Backbone.Router.extend({
   	routes:{
       'favorites/user/:id': 'showFavorites',
-  		'recommendations/:id': 'showRecommendations',
+  		'recommendations': 'showRecommendations',
   		'login':'showLoginPage',
   		'pub': 'showPub',
   		'search': 'showSearch',
@@ -31,8 +31,8 @@ const app = function() {
     showFavorites: function(id){
       ReactDOM.render(<Favorites userId={id}/> ,document.querySelector('.container'))
     },
-  	showRecommendations: function(id){
-  		ReactDOM.render(<Recommendations userId={id}/> ,document.querySelector('.container'))
+  	showRecommendations: function(){
+  		ReactDOM.render(<Recommendations /> ,document.querySelector('.container'))
   	},
   	showLoginPage: function(){
   		ReactDOM.render(<Login /> ,document.querySelector('.container'))

@@ -30,7 +30,7 @@ var ACTIONS = {
 	//--------------------------------------------------------//
 	//RECOMMENDATIONS
 	//--------------------------------------------------------//
-
+//?targetUser=58f52ab70e546e3fe4551c55
 	recommendBeer: function(recommendedData){
 		var newRec = new RecommendationModel(recommendedData)
 		newRec.save()
@@ -44,18 +44,27 @@ var ACTIONS = {
 				}
 			)
 	},
-
-	fetchRecommendationsByUser: function (inputID){
+	fetchRecommendationsbyID: function (inputID){
 		var recommendationColl = STORE.get('recommendationsCollection')
 		recommendationColl.fetch({
-			data:{
-				userId: inputID
+			data: {
+				targetUser: inputID
 			}
 		})
 			.then(function(){
 				STORE.set({
 					recommendationsCollection: recommendationColl
 				})
+			})
+	},
+
+	deleteRecommendation: function(userId, beerModel){
+		beerModel.destroy()
+			.done(ACTIONS.fetchRecommendationsbyID(userId))
+			.fail(
+				function(err){
+				toastr.error('Problem deleting your beer!')
+				console.log(err)
 			})
 	},
 

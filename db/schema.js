@@ -10,10 +10,14 @@ const usersSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 })
 
+// ----------------------
+// FAVORITES
+// ----------------------
 const favoritesSchema = new mongoose.Schema({
   userName: {type: String, required: true},
   userId: {type: String, required: true},
 	name: {type: String, required: true},
+  id: {type: String, required: true},
   labels: {type: mongoose.Schema.Types.Mixed},
   style: {type: mongoose.Schema.Types.Mixed},
   available: {type: mongoose.Schema.Types.Mixed},
@@ -25,6 +29,9 @@ const favoritesSchema = new mongoose.Schema({
   createdAt: {type: Date, default: Date.now}, 
 })
 
+// ----------------------
+// RECOMMENDATIONS
+// ----------------------
 const recommendationsSchema = new mongoose.Schema({
   recommendingUser: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
   targetUser: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},

@@ -58,19 +58,21 @@ const Modal = React.createClass({
 	},
 	render: function(){
 		var modalClass = this.state.modalShowing ? "modal-div" : "modal-div hidden"
-		console.log('this on modal',this)
+		// console.log('this on modal',this)
 		return(
 			<div className={modalClass} > 
-	 			<h3>{this.state.recommendBeer.get('name')} </h3>
-	 			<button onClick={this._closeModal}>X</button>
-	 			<form onSubmit={this._handleSubmit} className='recommendationForm'>
-					<select name="recomendee" >
-						<option disabled>who are you recommending to?</option>
-		 				{this.props.userCollection.map(this.createUserOptions)}	 				
-		 			</select>
-					<input name='comments' type='text' placeholder='Any comments on this beer?' />
-					<button type="submit">Send my recommendation!</button>
-				</form>
+				<div className="form">
+		 			<h3>{this.state.recommendBeer.get('name')} </h3>
+		 			<button onClick={this._closeModal}>X</button>
+		 			<form onSubmit={this._handleSubmit} className='recommendationForm'>
+						<select name="recomendee" >
+							<option disabled>who are you recommending to?</option>
+			 				{this.props.userCollection.map(this.createUserOptions)}	 				
+			 			</select>
+						<input name='comments' type='text' placeholder='Any comments on this beer?' />
+						<button type="submit">Send my recommendation!</button>
+					</form>
+				</div>
 		 	</div>
 		)
 	}
