@@ -32,7 +32,7 @@ const BeerDetails = React.createClass({
 
 const Details = React.createClass({
 	addToFavorites: function(){
-		ACTIONS.addFavorite(this.props.details.get('data'))
+		ACTIONS.addFavorite(this.props.details)
 	},
 	render: function() {
 		var beerDetails=this.props.details
