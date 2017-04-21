@@ -34,7 +34,11 @@ export var BeerModel = Backbone.Model.extend({
 			large: 'images/defaultBeer.jpg',
 			medium: 'images/defaultBeer.jpg'
 		},
-		name: ''
+		name: '',
+		foodPairings: '',
+		glass: {
+			name:''
+		}
 	},
 	parse: function(rawResponse) {
 		return rawResponse.data ? rawResponse.data : rawResponse
@@ -60,7 +64,11 @@ export var BeerCollection = Backbone.Collection.extend({
 			large: 'images/defaultBeer.jpg',
 			medium: 'images/defaultBeer.jpg'
 		},
-		name: ''
+		name: '',
+		foodPairings: '',
+		glass: {
+			name:''
+		}
 	},
 	model: BeerModel,
 	parse: function(apiResponse){
@@ -102,7 +110,11 @@ export var RecommendationModel = Backbone.Model.extend({
 			large: 'images/defaultBeer.jpg',
 			medium: 'images/defaultBeer.jpg'
 		},
-		name: ''
+		name: '',
+		foodPairings: '',
+		glass: {
+			name:''
+		}
 	},
 })
 
@@ -129,6 +141,10 @@ export var RecommendationCollection = Backbone.Collection.extend({
 			large: 'images/defaultBeer.jpg',
 			medium: 'images/defaultBeer.jpg'
 		},
-		name: ''
+		name: '',
+		foodPairings: '',
+		glass: {
+			name:''
+		}
 	},
 })

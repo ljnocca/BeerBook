@@ -19,10 +19,11 @@ const Favorites = React.createClass({
 	},
 	render: function() {
 		console.log('favcoll',this.state.favCollection)
+		var titleText = User.getCurrentUser() ? `${User.getCurrentUser().get('name')}, these are your favorite beers!` : ''
 	 	return (
 	 		<div className='favs-page'>
 	 			<Banner />
-	 			<h2 className="viewTitle">Your Favorites</h2>
+	 			<h2 className="viewTitle">{titleText}</h2>
 		 		<RecommendationModal />
 	 			<Beers 
 	 			beerCollection={this.state.favCollection}
@@ -67,12 +68,12 @@ const Beer = React.createClass({
 		return(
 			<div className='single-beer'>
 				<h2>{beerName}</h2>
-				<button className='recommend' onClick={this.handleClick}>Recommend This Beer!</button>
 				<h3>{beerStyle? beerStyle.category.name: ''}</h3>
 				<a className="detailsATag" href={`#beerDetails/${this.props.beerModel.get('id')}`}>
 					<img src={beerLabel ? this.props.beerModel.get('labels').medium : 'images/defaultBeer.jpg'}/>
 				</a>
-				<button className='delete' onClick={this.deleteFromFavorites}>Remove From Favorites</button>
+				<button className='recommend' onClick={this.handleClick}>Recommend this beer!</button>
+				<button className='delete' onClick={this.deleteFromFavorites}>Remove from favorites</button>
 			</div>
 		)
 	}

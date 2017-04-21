@@ -9,8 +9,8 @@ const Banner = React.createClass({
 
 	 	return (
 	 		<div className='banner' >
+
 	 			<h1 id="title">BeerBook</h1>
-	 			
 	 			<div id='flexNav'>
 		 			<ul className="loginOut">
 		 				<li className="navItem">

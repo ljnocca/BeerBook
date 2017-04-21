@@ -21,16 +21,20 @@ const Search = React.createClass({
 		return STORE.data
 	},
 	_handleSubmit: function(evtObj) {
+		ACTIONS.showGif()
 		evtObj.preventDefault()
 		var formEl = evtObj.target
 
 		ACTIONS.searchBeer(formEl.beerSearch.value)
+
+
 	},
 	render: function() {
-
+		
 	 	return (
 	 		<div className='search-page'>
 	 			<Banner />
+
 	 			<div className="splash-form">
 		 			<h2>Browse Beer Stuff</h2>
 		 			<form onSubmit={this._handleSubmit} className='search-form' >
@@ -43,6 +47,7 @@ const Search = React.createClass({
 						<button className="submitButton" type="submit">Search</button>
 					</form>
 				</div>
+				<div className="loader"><img src="../../images/ring.gif" className="loading_icon" alt="loading icon" /></div>
 	 			<Beers beerCollection={this.state.beerCollection}/>
 	 		</div>
 	 	)
@@ -76,9 +81,10 @@ const Beer = React.createClass({
 		var beerName = this.props.beerModel.get('name')
 		var beerStyle = this.props.beerModel.get('style')
 		var beerLabel = this.props.beerModel.get('labels')
-		
+		ACTIONS.hideGif()
 		return(
 			<div className='single-beer'>
+
 				<h2>{beerName}</h2>
 				<button className='like' onClick={this.addToFavorites}>&hearts;</button>
 				<h3>{beerStyle? beerStyle.category.name: ''}</h3>

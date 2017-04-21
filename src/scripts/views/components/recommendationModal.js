@@ -71,7 +71,7 @@ const Modal = React.createClass({
 						<input className="comments" name='comments' type='text' placeholder='Any comments on this beer?' />
 						<button className="loginButton" type="submit">Send my recommendation!</button>
 					</form>
-					<button className="tooYoung" onClick={this._closeModal}>X</button>
+					<button className="tooYoung" onClick={this._closeModal}>&times;</button>
 				</div>
 		 	</div>
 		)

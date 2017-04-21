@@ -19,10 +19,12 @@ const Recommendations = React.createClass({
 	},
 	
 	render: function() {
+		var titleText = User.getCurrentUser() ? `${User.getCurrentUser().get('name')}, here are the recommendations you've received!` : ''
 	 	return (
 	 		<div className='favs-page'>
 	 			<Banner />
-	 			<h2 className="viewTitle">Here are the Recommendations you've received!</h2>
+	 			<h2 className="viewTitle">{titleText}</h2>
+	 			<div className="loader"><img src="../../images/ring.gif" className="loading_icon" alt="loading icon" /></div>
 	 			<Beers beerCollection={this.state.recommendationsCollection}/>
 	 		</div>
 	 	)
@@ -54,20 +56,16 @@ const Beer = React.createClass({
 	},
 	render: function(){
 		console.log(this.props.beerModel)
-
-		var beerName = this.props.beerModel.get('beerFave').name
-		var beerStyle = this.props.beerModel.get('beerFave').style
-		var beerLabel = this.props.beerModel.get('beerFave').labels
 		
 		return(
 			<div className='single-beer'>
 				<h2>{this.props.beerModel.attributes.recommendingUser.name} recommended this beer!</h2>
-				<h2>{beerName}</h2>
+				<h2>{this.props.beerModel.get('beerFave')? this.props.beerModel.get('beerFave').name:''}</h2>
 				<button className='like' onClick={this.addToFavorites}>&hearts;</button>
-				<h3>{beerStyle? beerStyle.category.name: ''}</h3>
+				<h3>{this.props.beerModel.get('beerFave')? this.props.beerModel.get('beerFave').style.category.name: ''}</h3>
 
-				<a className="detailsATag" href={`#beerDetails/${this.props.beerModel.get('beerFave').id}`}>
-					<img className="beerImage" src={beerLabel ? this.props.beerModel.get('beerFave').labels.medium : 'images/defaultBeer.jpg'}/>
+				<a className="detailsATag" href={`#beerDetails/${this.props.beerModel.get('beerFave')?this.props.beerModel.get('beerFave').id:''}`}>
+					<img className="beerImage" src={this.props.beerModel.get('beerFave')?this.props.beerModel.get('beerFave').labels.medium:''}/>
 				</a>
 				<button className='delete' onClick={this.deleteFromRecommendations}>Ignore this Recommendation</button>
 			</div>

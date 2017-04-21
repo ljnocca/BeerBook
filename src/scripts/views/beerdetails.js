@@ -40,6 +40,7 @@ const Details = React.createClass({
 		var beerStyle = this.props.details.get('style')
 		var beerLabel = this.props.details.get('labels')
 		var beerAvailabilty = this.props.details.get('available')
+		var beerGlass = this.props.details.get('glass')
 
 		console.log(this.props.details)
 			return (
@@ -61,6 +62,12 @@ const Details = React.createClass({
 
 							<h3>{beerDetails.get('description')? `Description`: ''}</h3>
 							<p>{beerDetails.get('description')? beerDetails.get('description'):''}</p>
+
+							<h3>{beerGlass.name? `Recommended Glass Type`: ''}</h3>
+							<p>{beerGlass? beerGlass.name:''}</p>
+
+							<h3>{beerDetails.get('foodPairings')? `Food Pairings`: ''}</h3>
+							<p>{beerDetails.get('foodPairings')? beerDetails.get('foodPairings'):''}</p>
 						</div>
 					</div>
 				</div>

@@ -26,6 +26,7 @@ const favoritesSchema = new mongoose.Schema({
   description: {type: mongoose.Schema.Types.Mixed},
   foodPairings: {type: mongoose.Schema.Types.Mixed},
   isOrganic: {type: mongoose.Schema.Types.Mixed},
+  glass: {type: mongoose.Schema.Types.Mixed},
   createdAt: {type: Date, default: Date.now}, 
 })
 

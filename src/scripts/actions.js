@@ -107,6 +107,7 @@ var ACTIONS = {
 		})
 	},
 	searchBeer:function(searchString){
+
 		var beerInstance = new BeerCollection()
 		var promise = beerInstance.fetch({
 			data:{
@@ -203,6 +204,16 @@ var ACTIONS = {
 					console.log(err)
 				})
 	},
+
+	showGif: function(){
+		var loadingIcon = document.querySelector('.loader')
+    	loadingIcon.style.display = 'block'
+
+	},
+	hideGif: function(){
+		var loadingIcon = document.querySelector('.loader')
+   		loadingIcon.style.display = 'none'
+	}
 
 	
 }
