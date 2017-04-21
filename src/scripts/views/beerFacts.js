@@ -8,12 +8,12 @@ const BeerFacts = React.createClass({
 	 		<div className='beer-facts'>
 	 			<Banner />
 
-	 			<div className="fact-div">
-		 			<img src="../../images/beerGlassTypes.jpg" id="glassImage" />
+	 			<div className="fact-div beerInfo">
+		 			<img src="../../images/beerGlassTypes.jpg" />
 				</div>
 
-				<div className="fact-div">
-		 			<img src="../../images/beerInfo.png" id="beerInfo" />
+				<div className="fact-div beerInfo">
+		 			<img src="../../images/beerInfo.png" />
 				</div>
 
 	 			<div className="fact-div">
