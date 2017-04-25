@@ -57,7 +57,7 @@ const Details = React.createClass({
 							<img src={beerLabel?beerLabel.large:'images/defaultBeer.jpg'} />
 						</div>
 						<div className='rightDetails'>
-							<h3>{beerAvailabilty? `Availability`: ''}</h3>
+							<h3>{beerAvailabilty.description? `Availability`: ''}</h3>
 							<p>{beerAvailabilty?beerAvailabilty.description:''}</p>
 
 							<h3>{beerDetails.get('description')? `Description`: ''}</h3>
