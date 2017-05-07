@@ -53,7 +53,7 @@ const RegisterForm = React.createClass({
 	render: function() {
 		return (
 			<div className='splash-form'>
-				<h2>Register</h2>
+				<h2 className="h2-login">Register</h2>
 				<form onSubmit={this._handleSubmit}  >
 						<input 
 						className="formField"
@@ -97,7 +97,7 @@ const LoginForm = React.createClass({
 	render: function() {
 		return (
 			<div className='splash-form'>
-				<h2>Log In</h2>
+				<h2 className="h2-login">Log In</h2>
 				<form onSubmit={this._handleSubmit} className='login-form' >
 						 <input 
 							className="formField"

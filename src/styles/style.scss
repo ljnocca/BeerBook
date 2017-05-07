@@ -3,6 +3,11 @@
     font-family: 'Josefin Slab', serif;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body{
     margin: 0;
     background: url(../images/beerBackground.jpg);
@@ -89,7 +94,7 @@ h2 {
     background: rgba(0, 0, 0, 0.4);
 }
 .splash-form h2{
-    padding: 20px 0;
+    padding: 10px 0;
     font-size: 140%;
     font-weight: 300;
     text-align: center;
