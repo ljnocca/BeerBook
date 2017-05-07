@@ -269,11 +269,6 @@ ul.loginOut {
 }
 
 //FAVORITES & RECOMMENDATION MODAL
-// .favs-page {
-//     background: url(../images/beerLove.png);
-//     width: 100vw;
-//     background-attachment: fixed;
-// }
 
 button.recommend {
     background: #2797ca;
@@ -339,5 +334,17 @@ select {
     border: 4px solid black;
 }
 
+//MEDIA QUERY
+@media only screen and (max-device-width: 470px){
+    .splash-form{
+        min-width: 80%;
+    }
+    .splash-form h2 {
+        font-size: 50px;
+    }
+    input.formField, button {
+    font-size: 40px;
+    }
+}
 
 
