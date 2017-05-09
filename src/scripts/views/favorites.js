@@ -70,7 +70,7 @@ const Beer = React.createClass({
 				<h2>{beerName}</h2>
 				<h3>{beerStyle? beerStyle.category.name: ''}</h3>
 				<a className="detailsATag" href={`#beerDetails/${this.props.beerModel.get('id')}`}>
-					<img className="favoritesImg" src={beerLabel ? this.props.beerModel.get('labels').medium : 'images/defaultBeer.jpg'}/>
+					<img className="beerImage" src={beerLabel ? this.props.beerModel.get('labels').medium : 'images/defaultBeer.jpg'}/>
 				</a>
 				<button className='recommend' onClick={this.handleClick}>Recommend this beer!</button>
 				<button className='delete' onClick={this.deleteFromFavorites}>Remove from favorites</button>
