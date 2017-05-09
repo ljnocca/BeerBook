@@ -54,19 +54,19 @@ const Details = React.createClass({
 					</div>
 					<div className='details'>
 						<div className='leftDetails'>
-							<img src={beerLabel?beerLabel.large:'images/defaultBeer.jpg'} />
+							<img className='detailImage' src={beerLabel?beerLabel.large:'images/defaultBeer.jpg'} />
 						</div>
 						<div className='rightDetails'>
-							<h3>{beerAvailabilty.description? `Availability`: ''}</h3>
+							<h3 className='detailTitle'><u>{beerAvailabilty.description? `Availability`: ''}</u></h3>
 							<p>{beerAvailabilty?beerAvailabilty.description:''}</p>
 
-							<h3>{beerDetails.get('description')? `Description`: ''}</h3>
+							<h3 className='detailTitle'><u>{beerDetails.get('description')? `Description`: ''}</u></h3>
 							<p>{beerDetails.get('description')? beerDetails.get('description'):''}</p>
 
-							<h3>{beerGlass.name? `Recommended Glass Type`: ''}</h3>
+							<h3 className='detailTitle'><u>{beerGlass.name? `Recommended Glass Type`: ''}</u></h3>
 							<p>{beerGlass? beerGlass.name:''}</p>
 
-							<h3>{beerDetails.get('foodPairings')? `Food Pairings`: ''}</h3>
+							<h3 className='detailTitle'><u>{beerDetails.get('foodPairings')? `Food Pairings`: ''}</u></h3>
 							<p>{beerDetails.get('foodPairings')? beerDetails.get('foodPairings'):''}</p>
 						</div>
 					</div>

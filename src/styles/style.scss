@@ -351,6 +351,25 @@ select {
 }
 
 @media only screen and (max-device-width: 412px){
+    html {
+    font-size: 20px;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    p,a,span,i,strong,b,h4,h5,h6,input,button {
+        font-size: 1.5rem;
+    }
     .splash-form{
         min-width: 80%;
     }
@@ -366,6 +385,47 @@ select {
     .single-beer{
         margin: 10px auto;
         width: 80%
+    }
+    .details{
+        display: block;
+    }
+    .leftDetails{
+        text-align: center;
+    }
+    img.detailImage {
+        width: 100%;
+    }
+    h3.detailTitle{
+        text-align: center;
+    }
+    .mainFacts {
+    display: block;
+    text-align: center;
+    }
+    button.like{
+        font-size: 100px;
+    }
+    img.favoritesImg {
+    width: 75%;
+    }
+    button.recommend, button.delete{
+        padding: 15px;
+    }
+    button.recommend{
+        margin-bottom: 15px;
+    }
+    div#flexNav {
+    display: block;
+    text-align: center;
+    }
+    .container .banner li a {
+    font-size: 50px;
+    }
+    .container .banner li {
+    display: block;
+    }
+    ul.navigation {
+    padding: 0;
     }
 }
 
