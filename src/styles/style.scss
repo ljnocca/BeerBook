@@ -338,6 +338,11 @@ select {
 }
 
 //MEDIA QUERY
+@media only screen and (max-device-width: 1030px){
+    .single-beer {
+    width: 48%;
+    }
+}
 @media only screen and (max-device-width: 470px){
     .splash-form{
         min-width: 80%;
