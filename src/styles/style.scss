@@ -181,9 +181,10 @@ img {
 
 
 button.like {
-    background: #e43f3f;
-    color: white;
+    background: transparent;
+    color: #e43f3f;
     font-size: 30px;
+    border: none;
 }
 
 //BANNER
@@ -274,12 +275,14 @@ button.recommend {
     background: #2797ca;
     color: white;
     font-size: 24px;
+    width: 75%;
 }
 
 button.delete {
     background: #e43f3f;
     color: white;
     font-size: 24px;
+    width: 75%;
 }
 
 .modal-div {
@@ -344,6 +347,25 @@ select {
     }
     input.formField, button {
     font-size: 40px;
+    }
+}
+
+@media only screen and (max-device-width: 412px){
+    .splash-form{
+        min-width: 80%;
+    }
+    .splash-form h2 {
+        font-size: 50px;
+    }
+    input.formField, button {
+        font-size: 40px;
+    }
+    .container .beers {
+        display: block;
+    }
+    .single-beer{
+        margin: 10px auto;
+        width: 80%
     }
 }
 

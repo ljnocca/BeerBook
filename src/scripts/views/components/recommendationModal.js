@@ -68,7 +68,6 @@ const Modal = React.createClass({
 							<option disabled>who are you recommending to?</option>
 			 				{this.props.userCollection.map(this.createUserOptions)}	 				
 			 			</select>
-						<input className="comments" name='comments' type='text' placeholder='Any comments on this beer?' />
 						<button className="loginButton" type="submit">Send my recommendation!</button>
 					</form>
 					<button className="tooYoung" onClick={this._closeModal}>&times;</button>
